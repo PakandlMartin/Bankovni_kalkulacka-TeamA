@@ -1,1 +1,7 @@
 <p>form-details works!</p>
+
+<div *ngIf="infoAboutUserFromAPI">
+{{infoAboutUserFromAPI.name}}
+</div>
+
+<button (click) = "displayClick()">Klik</button>

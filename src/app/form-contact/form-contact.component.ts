@@ -14,8 +14,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class FormContactComponent implements DoCheck, OnInit {
 
   ngDoCheck(): void {
-this.client.amount = String(this.userInfoService.calculationInformation.amount)
-this.client.numOfMonths = String(this.userInfoService.calculationInformation.numOfMonths)
+this.client.amount = (this.userInfoService.calculationInformation.amount)
+this.client.numOfMonths = (this.userInfoService.calculationInformation.numOfMonths)
+
+console.log(this.userInfoService.infoAboutUser)
   }
 
   constructor(private httpRequestsService: HttpRequestsService,
@@ -56,7 +58,7 @@ this.client.numOfMonths = String(this.userInfoService.calculationInformation.num
     }
   };
 
-  onSubmit() {
+  signValuesFromInputs() {
     this.client.applicantType = this.signUpForm.value.applicantType;
     this.client.name = this.signUpForm.value.name;
     this.client.companyName = this.signUpForm.value.companyName
@@ -67,19 +69,26 @@ this.client.numOfMonths = String(this.userInfoService.calculationInformation.num
     this.client.phone = this.signUpForm.value.phone;
     this.client.IC = this.signUpForm.value.IC;
     this.client.position = this.signUpForm.value.position;
-    this.client.amount = this.signUpForm.value.amount;
-    this.client.numOfMonths = this.signUpForm.value.numOfMonths;
+    // this.client.amount = this.signUpForm.value.amount;
+    // this.client.numOfMonths = this.signUpForm.value.numOfMonths;
     this.client.address.street = this.signUpForm.value.street;
     this.client.address.descNumber = Number(this.signUpForm.value.descNumber);
     this.client.address.indicativeNumber = Number(this.signUpForm.value.indicativeNumber);
     this.client.address.city = this.signUpForm.value.city;
     this.client.address.postalCode = Number(this.signUpForm.value.postalCode);
- 
+  }
+
+
+
+  onSubmit() {
+
+    this.signValuesFromInputs()
 
     console.log(this.client);
     
     this.httpRequestsService.postInfoAboutUser(this.client).subscribe(responseData => {
       console.log(responseData.body)
+      this.userInfoService.infoAboutUser = responseData.body
     })
 
     this.router.navigate(['form-details'], {relativeTo: this.route});
