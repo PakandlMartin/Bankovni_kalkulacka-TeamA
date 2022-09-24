@@ -78,19 +78,13 @@ this.client.numOfMonths = String(this.userInfoService.calculationInformation.num
 
     console.log(this.client);
     
-    this.httpRequestsService.postInfoAboutUser(this.client);
-
-
-
+    this.httpRequestsService.postInfoAboutUser(this.client).subscribe(responseData => {
+      console.log(responseData.body)
+    })
 
     this.router.navigate(['form-details'], {relativeTo: this.route});
   }
-
 }
-
-
-
-
 
   // userForm = {
   //   applicantType: "INDIVIDUAL",

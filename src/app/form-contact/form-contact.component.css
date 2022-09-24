@@ -60,6 +60,17 @@ margin: 20px 80px ;
     display: inline-block;
   }
 
+  .flex-small {
+    display: flex;
+    justify-content: space-between;
+    gap: 42px;
+  }
+
+  .inputSmaller input{
+   min-width: 10px;
+   max-width: 80px;
+  }
+
   .applicantTypeSelect {
     padding: 0.5rem;
     min-width: 100%;
@@ -140,7 +151,15 @@ min-height: 30px; */
 .smallHeader {
   font-size: 1rem;
   font-weight: normal;
-  margin-bottom: -10px;
+  margin-bottom: -5px;
   padding-bottom: 0;
   margin-top: -25px;
+}
+
+hr {
+  border: solid #CCCCCC  0.5px
+}
+
+.small {
+font-size: 0.6rem;
 }

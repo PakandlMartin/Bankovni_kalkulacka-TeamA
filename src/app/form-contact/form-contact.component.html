@@ -3,225 +3,222 @@
 <h2>Úvěr sjednává</h2>
 
 <div class="container">
-    <form (ngSubmit)="onSubmit()" #f="ngForm">
-      <div class="form-person">
-        <div class="form-person-in">
-
-      <div>
-        <label for="applicantType">Žadatelem o úvěr je  </label>
-        <br>
-        <select class="applicantTypeSelect"
-          id="applicantType"
-          [(ngModel)]="selectedType"
-          name="applicantType"
-        >
-          <option value="INDIVIDUAL">Fyzická osoba</option>
-          <option value="OSVC">Podnikatel fyzická osoba</option>
-          <option value="LEGAL_ENTITY">Právnická osoba</option>
-        </select>
-      </div>
-      <br />
-
-      <div class="flex">
-      <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="name">Název firmy</label><br />
-        <input
-          type="text"
-          id="companyName"
-          ngModel
-          name="companyName"
-          #companyName="ngModel"
-          minlength="2"
-          required
-        />
-        
-        <div *ngIf="!companyName.valid && companyName.touched">
-          <p class="warning">Nesmí být prázdné</p>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-person">
+      <div class="form-person-in">
+        <div>
+          <label for="applicantType">Žadatelem o úvěr je </label>
+          <br />
+          <select
+            class="applicantTypeSelect"
+            id="applicantType"
+            [(ngModel)]="selectedType"
+            name="applicantType"
+          >
+            <option value="INDIVIDUAL">Fyzická osoba</option>
+            <option value="OSVC">Podnikatel fyzická osoba</option>
+            <option value="LEGAL_ENTITY">Právnická osoba</option>
+          </select>
         </div>
-      </div>
+        <br />
 
-      <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="IC">IČO</label><br />
-        <input
-          type="number"
-          id="IC"
-          ngModel
-          name="IC"
-          minlength="8"
-          maxlength="8"
-          #IC="ngModel"
-          required
-        />
-        <div *ngIf="!IC.valid && IC.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div class="flex">
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="name">Název firmy</label><br />
+            <input
+              type="text"
+              id="companyName"
+              ngModel
+              name="companyName"
+              #companyName="ngModel"
+              minlength="2"
+              required
+            />
+
+            <div *ngIf="!companyName.valid && companyName.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="IC">IČO</label><br />
+            <input
+              type="number"
+              id="IC"
+              ngModel
+              name="IC"
+              minlength="8"
+              maxlength="8"
+              #IC="ngModel"
+              required
+            />
+            <div *ngIf="!IC.valid && IC.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
+        <div class="flex">
+          <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
+            <label for="name">Jméno</label><br />
+            <input
+              type="text"
+              id="name"
+              ngModel
+              name="name"
+              #name="ngModel"
+              required
+              minlength="3"
+            />
+            <div *ngIf="!name.valid && name.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
 
-      <div class="flex">
-      <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
-        <label for="name">Jméno</label><br />
-        <input
-          type="text"
-          id="name"
-          ngModel
-          name="name"
-          #name="ngModel"
-          required
-          minlength="3"
-        />
-        <div *ngIf="!name.valid && name.touched">
-          <p class="warning">Nesmí být prázdné</p>
+          <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
+            <label for="surname">Příjmení</label><br />
+            <input
+              type="text"
+              id="surname"
+              ngModel
+              name="surname"
+              #surname="ngModel"
+              required
+              minlength="3"
+            />
+            <div *ngIf="!surname.valid && surname.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
-        <label for="surname">Příjmení</label><br />
-        <input
-          type="text"
-          id="surname"
-          ngModel
-          name="surname"
-          #surname="ngModel"
-          required
-          minlength="3"
-        />
-        <div *ngIf="!surname.valid && surname.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div class="flex">
+          <div *ngIf="selectedType === 'INDIVIDUAL'">
+            <label for="IC">Rodné číslo</label><br />
+            <input
+              type="string"
+              id="birthNum"
+              ngModel
+              name="birthNum"
+              #birthNum="ngModel"
+              minlength="10"
+              maxlength="10"
+              required
+            />
+            <div *ngIf="!birthNum.valid && birthNum.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
+            <label for="nationality">Státní příslušnost</label><br />
+            <input
+              type="text"
+              id="nationality"
+              ngModel
+              name="nationality"
+              #nationality="ngModel"
+              required
+            />
+            <div *ngIf="!nationality.valid && nationality.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div *ngIf="selectedType === 'OSVC'">
+            <label for="IC">IČO</label><br />
+            <input
+              type="number"
+              id="IC"
+              ngModel
+              name="IC"
+              minlength="8"
+              maxlength="8"
+              #IC="ngModel"
+              required
+            />
+            <div *ngIf="!IC.valid && IC.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </div>
+        <h3 class="smallHeader" *ngIf="selectedType === 'LEGAL_ENTITY'">
+          Jednající osoba
+        </h3>
+        <hr *ngIf="selectedType === 'LEGAL_ENTITY'" />
 
-    <div class="flex">
-
-      <div *ngIf="selectedType === 'INDIVIDUAL'">
-        <label for="IC">Rodné číslo</label><br />
-        <input
-          type="string"
-          id="birthNum"
-          ngModel
-          name="birthNum"
-          #birthNum="ngModel"
-          minlength="10"
-          maxlength="10"
-          required
-        />
-        <div *ngIf="!birthNum.valid && birthNum.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div class="flex">
+          <div *ngIf="selectedType === 'OSVC' || selectedType === 'INDIVIDUAL'">
+            <label for="email">Email</label><br />
+            <input
+              type="text"
+              id="email"
+              ngModel
+              name="email"
+              #email="ngModel"
+              required
+              email
+            />
+            <div *ngIf="!email.valid && email.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+          <div
+            class="phoneDiv"
+            *ngIf="selectedType === 'OSVC' || selectedType === 'INDIVIDUAL'"
+          >
+            <label for="phone">Telefon</label><br />
+            <span>+420 </span>
+            <input
+              type="string"
+              id="phone"
+              ngModel
+              name="phone"
+              #phone="ngModel"
+              maxlength="12"
+              minlength="9"
+              required
+            />
+            <div *ngIf="!phone.valid && phone.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
-        <label for="nationality">Státní příslušnost</label><br />
-        <input
-          type="text"
-          id="nationality"
-          ngModel
-          name="nationality"
-          #nationality="ngModel"
-          required
-        />
-        <div *ngIf="!nationality.valid && nationality.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div class="flex" *ngIf="selectedType === 'LEGAL_ENTITY'">
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="name">Jméno</label><br />
+            <input
+              type="text"
+              id="name"
+              ngModel
+              name="name"
+              minlength="3"
+              #name="ngModel"
+              required
+            />
+            <div *ngIf="!name.valid && name.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="surname">Příjmení</label><br />
+            <input
+              type="text"
+              id="surname"
+              ngModel
+              name="surname"
+              #surname="ngModel"
+              minlength="3"
+              required
+            />
+            <div *ngIf="!surname.valid && surname.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div *ngIf="selectedType === 'OSVC'">
-        <label for="IC">IČO</label><br />
-        <input
-          type="number"
-          id="IC"
-          ngModel
-          name="IC"
-          minlength="8"
-          maxlength="8"
-          #IC="ngModel"
-          required
-        />
-        <div *ngIf="!IC.valid && IC.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-    </div>
-
-      <h3 class="smallHeader" *ngIf="selectedType === 'LEGAL_ENTITY'">Jednající osoba</h3>
-      <hr *ngIf="selectedType === 'LEGAL_ENTITY'" />
-
-    
-<div class="flex">
-
-
-      <div *ngIf="selectedType === 'OSVC' || selectedType === 'INDIVIDUAL'">
-        <label for="email">Email</label><br />
-        <input
-          type="text"
-          id="email"
-          ngModel
-          name="email"
-          #email="ngModel"
-          required
-          email
-        />
-        <div *ngIf="!email.valid && email.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-      <div class="phoneDiv"  *ngIf="selectedType === 'OSVC' || selectedType === 'INDIVIDUAL'">
-        <label for="phone">Telefon</label><br />
-        <span>+420 </span>
-        <input
-          type="string"
-          id="phone"
-          ngModel
-          name="phone"
-          #phone="ngModel"
-          maxlength="12"
-          minlength="9"
-          required
-        />
-        <div *ngIf="!phone.valid && phone.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-
-    </div>
-
-    
-<div class="flex" *ngIf="selectedType === 'LEGAL_ENTITY'" >
-      <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="name">Jméno</label><br />
-        <input
-          type="text"
-          id="name"
-          ngModel
-          name="name"
-          minlength="3"
-          #name="ngModel"
-          required
-        />
-        <div *ngIf="!name.valid && name.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-      <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="surname">Příjmení</label><br />
-        <input
-          type="text"
-          id="surname"
-          ngModel
-          name="surname"
-          #surname="ngModel"
-          minlength="3"
-          required
-        />
-        <div *ngIf="!surname.valid && surname.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-    </div>
-      <!-- <div *ngIf="selectedType ==='LEGAL_ENTITY'">
+        <!-- <div *ngIf="selectedType ==='LEGAL_ENTITY'">
           <label for="position">Funkce</label><br>
           <input
             type="text"
@@ -234,7 +231,7 @@
               <p class="warning">Tento údaj je povinný!</p>
             </div>
         </div> -->
-      <!-- 
+        <!-- 
         <div *ngIf="selectedType ==='LEGAL_ENTITY'">
           <label for="position">Funkce</label><br>
           <input
@@ -249,199 +246,194 @@
             </div>
         </div> -->
 
-      <div  *ngIf="selectedType === 'LEGAL_ENTITY'" class="selectPosition">
-        <label for="position">Funkce</label><br />
-        <select class="positionSelect"
-          onfocus="this.size=5;"
-          onblur="this.size=1;"
-          onchange="this.size=1; this.blur();"
-          name="position"
-          id="position"
-          ngModel
-          name="position"
-          #position="ngModel"
-          required
-        >
-          <option value="členka představenstva">členka představenstva</option>
-          <option value="členka správní rady">
-            členka členka správní rady
-          </option>
-          <option value="členka výboru">členka výboru</option>
-          <option value="člen představenstva">člen představenstva</option>
-          <option value="člen správní rady">člen správní rady</option>
-          <option value="člen výboru">člen výboru</option>
-          <option value="ekonom">ekonom</option>
-          <option value="ekonomka">ekonomka</option>
-          <option value="generální ředitel">generální ředitel</option>
-          <option value="generální ředitelka">generální ředitelka</option>
-          <option value="jednatel">jednatel</option>
-          <option value="jednatelka">jednatelka</option>
-          <option value="místopředseda">místopředseda</option>
-          <option value="místopředsedkyně">místopředsedkyně</option>
-          <option value="místostarosta">místostarosta</option>
-          <option value="místostarostka">místostarostka</option>
-          <option value="předseda">předseda</option>
-          <option value="předseda představenstva">
-            předseda představenstva
-          </option>
-          <option value="předseda sprvání rady">předseda správní rady</option>
-          <option value="předsedkyně">předsedkyně</option>
-          <option value="předsedkyně představenstva">
-            předsedkyně představenstva
-          </option>
-          <option value="předsedkyně správní rady">
-            předsedkyně správní rady
-          </option>
-          <option value="primátor">primátor</option>
-          <option value="primátorka">primátorka</option>
-          <option value="prokurista">prokurista</option>
-          <option value="ředitel">ředitel</option>
-          <option value="ředitelka">ředitelka</option>
-          <option value="společník">společník</option>
-          <option value="starosta">starosta</option>
-          <option value="statutární ředitel">statutární ředitel</option>
-          <option value="statutární ředitelka">statutární ředitelka</option>
-          <option value="účetní">účetní</option>
-          <option value="zástupce">zástupce</option>
-          <option value="zplnomocněná">zplnomocněná</option>
-          <option value="zplnomocněný">zplnomocněný</option>
-        </select>
-        <div *ngIf="!position.valid && position.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div *ngIf="selectedType === 'LEGAL_ENTITY'" class="selectPosition">
+          <label for="position">Funkce</label><br />
+          <select
+            class="positionSelect"
+            onfocus="this.size=5;"
+            onblur="this.size=1;"
+            onchange="this.size=1; this.blur();"
+            name="position"
+            id="position"
+            ngModel
+            name="position"
+            #position="ngModel"
+            required
+          >
+            <option value="členka představenstva">členka představenstva</option>
+            <option value="členka správní rady">
+              členka členka správní rady
+            </option>
+            <option value="členka výboru">členka výboru</option>
+            <option value="člen představenstva">člen představenstva</option>
+            <option value="člen správní rady">člen správní rady</option>
+            <option value="člen výboru">člen výboru</option>
+            <option value="ekonom">ekonom</option>
+            <option value="ekonomka">ekonomka</option>
+            <option value="generální ředitel">generální ředitel</option>
+            <option value="generální ředitelka">generální ředitelka</option>
+            <option value="jednatel">jednatel</option>
+            <option value="jednatelka">jednatelka</option>
+            <option value="místopředseda">místopředseda</option>
+            <option value="místopředsedkyně">místopředsedkyně</option>
+            <option value="místostarosta">místostarosta</option>
+            <option value="místostarostka">místostarostka</option>
+            <option value="předseda">předseda</option>
+            <option value="předseda představenstva">
+              předseda představenstva
+            </option>
+            <option value="předseda sprvání rady">předseda správní rady</option>
+            <option value="předsedkyně">předsedkyně</option>
+            <option value="předsedkyně představenstva">
+              předsedkyně představenstva
+            </option>
+            <option value="předsedkyně správní rady">
+              předsedkyně správní rady
+            </option>
+            <option value="primátor">primátor</option>
+            <option value="primátorka">primátorka</option>
+            <option value="prokurista">prokurista</option>
+            <option value="ředitel">ředitel</option>
+            <option value="ředitelka">ředitelka</option>
+            <option value="společník">společník</option>
+            <option value="starosta">starosta</option>
+            <option value="statutární ředitel">statutární ředitel</option>
+            <option value="statutární ředitelka">statutární ředitelka</option>
+            <option value="účetní">účetní</option>
+            <option value="zástupce">zástupce</option>
+            <option value="zplnomocněná">zplnomocněná</option>
+            <option value="zplnomocněný">zplnomocněný</option>
+          </select>
+          <div *ngIf="!position.valid && position.touched">
+            <p class="warning">Nesmí být prázdné</p>
+          </div>
         </div>
-      </div>
 
- 
-<div class="flex" *ngIf="selectedType === 'LEGAL_ENTITY'">
+        <div class="flex" *ngIf="selectedType === 'LEGAL_ENTITY'">
+          <div class="phoneDiv" *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="phone">Telefon</label><br />
+            <span>+420 </span>
+            <input
+              type="string"
+              id="phone"
+              ngModel
+              name="phone"
+              #phone="ngModel"
+              maxlength="12"
+              minlength="9"
+              required
+            />
+            <div *ngIf="!phone.valid && phone.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
 
-
-      <div class="phoneDiv"  *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="phone">Telefon</label><br />
-        <span>+420 </span>
-        <input
-          type="string"
-          id="phone"
-          ngModel
-          name="phone"
-          #phone="ngModel"
-          maxlength="12"
-          minlength="9"
-          required
-        />
-        <div *ngIf="!phone.valid && phone.touched">
-          <p class="warning">Nesmí být prázdné</p>
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="email">Email</label><br />
+            <input
+              type="text"
+              id="email"
+              ngModel
+              name="email"
+              #email="ngModel"
+              required
+              minlength="4"
+              email
+            />
+            <div *ngIf="!email.valid && email.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-        <label for="email">Email</label><br />
-        <input
-          type="text"
-          id="email"
-          ngModel
-          name="email"
-          #email = "ngModel"
-          required
-          minlength="4"
-          email
-        />
-        <div *ngIf="!email.valid && email.touched">
-          <p class="warning">Nesmí být prázdné</p>
+        <div class="flex">
+          <div>
+            <label for="street">Ulice</label><br />
+            <input
+              type="text"
+              id="street"
+              ngModel
+              name="street"
+              #street="ngModel"
+              minlength="2"
+              required
+            />
+            <div *ngIf="!street.valid && street.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div class="flex-small">
+
+          <div class="inputSmaller">
+            <label for="descNumber">Č. popisné</label><br />
+            <input 
+              type="number"
+              id="descNumber"
+              ngModel
+              name="descNumber"
+              #descNumber="ngModel"
+              required
+            />
+            <div *ngIf="!descNumber.valid && descNumber.touched">
+              <p class="warning small">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div class="inputSmaller ">
+            <label for="indicativeNumber"> Č. orientační</label><br />
+            <input 
+              type="number"
+              id="indicativeNumber"
+              ngModel
+              name="indicativeNumber"
+              #indicativeNumber="ngModel"
+              required
+            />
+            <div *ngIf="!indicativeNumber.valid && indicativeNumber.touched">
+              <p class="warning small">Nesmí být prázdné</p>
+            </div>
+          </div>
         </div>
-      </div>
+        </div>
 
+        <div class="flex">
+          <div>
+            <label for="city">Obec</label><br />
+            <input
+              type="text"
+              id="city"
+              ngModel
+              name="city"
+              #city="ngModel"
+              minlength="2"
+              required
+            />
+            <div *ngIf="!city.valid && city.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="postalCode">PSČ</label><br />
+            <input
+              type="number"
+              id="postalCode"
+              ngModel
+              name="postalCode"
+              #postalCode="ngModel"
+              minlength="6"
+              required
+            />
+            <div *ngIf="!postalCode.valid && postalCode.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="">ODESLAT</button>
+        <!-- [disabled]="!f.valid" -->
+      </div>
     </div>
-
-      <div class="flex">
-      <div>
-        <label for="street">Ulice</label><br />
-        <input
-          type="text"
-          id="street"
-          ngModel
-          name="street"
-          #street = "ngModel"
-          minlength="2"
-          required
-        />  <div *ngIf="!street.valid && street.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-
-      <div>
-        <label for="descNumber">Číslo popisné</label><br />
-        <input
-          type="number"
-          id="descNumber"
-          ngModel
-          name="descNumber"
-          #descNumber = "ngModel"
-          required
-        />
-        <div *ngIf="!descNumber.valid && descNumber.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex">
-
-   
-      <div>
-        <label for="indicativeNumber">Číslo orientační</label><br />
-        <input
-          type="number"
-          id="indicativeNumber"
-          ngModel
-          name="indicativeNumber"
-          #indicativeNumber = "ngModel"
-          required
-        />
-        <div *ngIf="!indicativeNumber.valid && indicativeNumber.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-
-      <div>
-        <label for="city">Obec</label><br />
-        <input
-          type="text"
-          id="city"
-          ngModel
-          name="city"
-          #city = "ngModel"
-          minlength="2"
-          required
-        />
-        <div *ngIf="!city.valid && city.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex-postalCode">
-      <div>
-        <label for="postalCode">PSČ</label><br />
-        <input
-          type="number"
-          id="postalCode"
-          ngModel
-          name="postalCode"
-          #postalCode = "ngModel"
-          minlength="6"
-          required
-        />
-        <div *ngIf="!postalCode.valid && postalCode.touched">
-          <p class="warning">Nesmí být prázdné</p>
-        </div>
-      </div>
-    </div>
-
-      <button type="submit" class="" >
-        ODESLAT
-      </button>
-      <!-- [disabled]="!f.valid" -->
-    </div>
-    </div>
-    </form>
+  </form>
 </div>

@@ -54,21 +54,34 @@ export class HttpRequestsService {
       });
     }
 
-  postInfoAboutUser(infoAboutUserInput: any) {
-    const httpPostBody = infoAboutUserInput;
-    this.http
-    .post(
-      'http://localhost:8000/request/create',
-      httpPostBody, {
-        observe: 'response'
-      }
-    )
-    .subscribe(responseData => {
-console.log(responseData.body)
-    }), error => {
-      this.error.next(error.message)
-    }
+
+
+postInfoAboutUser(infoAboutUserInput): Observable<any> {
+  const httpPostBody = infoAboutUserInput;
+return this.http.post<any>(
+  'http://localhost:8000/request/create', httpPostBody, {
+    observe: "response"
   }
+)
+}
+
+
+
+//   postInfoAboutUser(infoAboutUserInput: any) {
+//     const httpPostBody = infoAboutUserInput;
+//     this.http
+//     .post(
+//       'http://localhost:8000/request/create',
+//       httpPostBody, {
+//         observe: 'response'
+//       }
+//     )
+//     .subscribe(responseData => {
+// console.log(responseData.body)
+//     }), error => {
+//       this.error.next(error.message)
+//     }
+//   }
 
 
   login(login: string, password: string) {
