@@ -1,19 +1,23 @@
 <link rel="stylesheet" href="auth.component.css">
 <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <label>Váš identifikační kód</label>
-      <input
-        type="number"
+
+      <label>Zadejte indentifikační kód žádosti o úvěr</label>
+      <div class="flex">
+        <input
+        type="text"
         id="token"
-      ngModel
-      name="token">
+        [(ngModel)] = "token"
+        name="token">
+      </div>
       <hr>
-
-      <button type="submit" class="btn btn-success">PŘIHLÁSIT SE</button>
-
-    </div>
-  </div>
+<div class="flex">
+  <button type="submit" class="btn btn-success">PŘIHLÁSIT SE</button>
 </div>
+<p class="clientExist" *ngIf="!clientExist">
+  Bohužel se nám vaši žádost nepodařilo dohledat. Zkontrolujte si správnost identifikačního kódu.
+</p>
+</div>
+
+
 </form>

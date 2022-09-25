@@ -38,7 +38,11 @@ margin: 20px 80px ;
 }
 
   .warning {
-    color: red;
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    padding-left: 8px;
+    border-radius: 3px;
   }
 
   option {

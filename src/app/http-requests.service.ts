@@ -65,6 +65,21 @@ return this.http.post<any>(
 )
 }
 
+getInfoAboutUser(id: string) {
+  this.http.get<any>('http://localhost:8000/request/' + id).subscribe(responseData =>{
+    console.log(responseData)
+  })
+}
+
+// showClients(): Observable<[{position: string, amount: number, numOfMonths: number, created: string,
+//   status: string, id: string, name: string, surname: string, companyName: string, applicantType: string}]> {
+//      return this.http.get<any>('http://localhost:8000/request/list',
+//       {headers: new HttpHeaders({
+//           Authorization: 'Bearer ' + this.myToken
+//         })})
+//   }
+
+
 
 
 //   postInfoAboutUser(infoAboutUserInput: any) {

@@ -64,10 +64,24 @@ span {
     justify-content: center;
 }
 
+button {
+  font-size: 1.4rem;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  display: block;
+  color: rgb(8, 115, 15);
+  background-color:  white;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  margin: 35px auto;
+  border: none;
+}
+
+
+
+
 button:disabled {
-    font-size: 1.2rem;
-    margin-top: 30px;
-    padding: 1rem;
     text-align: center;
     display: block;
     font-weight: bold;
@@ -76,24 +90,10 @@ button:disabled {
     cursor: auto;
 }
 
-button {
-    font-size: 1.2rem;
-    padding: 1rem;
-    text-align: center;
-    display: block;
-    font-weight: bold;
-    color: rgb(8, 115, 15);
-    background-color: #ffffff;
-    margin-bottom: 20px;
-    cursor: pointer;
-    border: solid rgb(20, 121, 27) 2px ;
-    border-radius: 2px;
-}
+
 
 .hover:hover {
-    color: #ffffff;
-    background-color: rgb(20, 121, 27);
-    border: solid 2px white;
+  box-shadow: 0 0 6px rgb(255, 255, 255);
 }
 
 .formDisplay {
