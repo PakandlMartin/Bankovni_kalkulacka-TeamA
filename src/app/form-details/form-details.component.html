@@ -80,7 +80,7 @@
             </span>
         </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || 'OSVC' " class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC' " class="item flex">
             <span >STÁTNÍ PŘÍSLUŠNOST
                 </span>
             <span class="bold black">
@@ -88,9 +88,7 @@
             </span>
         </div>
 
-
-
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' || 'OSVS'" class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' || infoAboutUserFromAPI.applicantType === 'OSVC' " class="item flex">
             <span > IČO
                 </span>
             <span class="bold black">
@@ -110,9 +108,19 @@
             Jednající osoba
           </h4>
 
+          <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
+            <span >JMÉNO</span>
+            <span class="bold black">{{infoAboutUserFromAPI.name}}</span>
+        </div>
+
+        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
+            <span >PŘÍJMENÍ</span>
+            <span class="bold black">{{infoAboutUserFromAPI.surname}}</span>
+        </div>
+
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'" class="item flex">
             <span >FUNKCE</span>
-            <span class="bold black">Ředitel planety</span>
+            <span class="bold black">{{infoAboutUserFromAPI.position}}</span>
         </div>
 
         <div class="item flex">
