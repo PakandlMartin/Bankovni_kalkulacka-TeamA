@@ -1,0 +1,78 @@
+
+.container {
+    margin: 40px auto 40px auto;
+    max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.617);
+  border: 60px solid rgba(255, 255, 255, 0);
+}
+
+h1 {
+    text-align: center;
+    color:#333333;
+    margin-top: 0
+}
+
+h2 {
+    color: #333333
+}
+
+h3 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+.personalInformation {
+    max-width: 420px;
+    margin: auto auto;
+    font-size: 1.1rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.black {
+    color: #333333
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    color: #666666;
+}
+
+.item {
+    margin-bottom: 3px;
+}
+
+.green {
+    color: #00843d;
+}
+
+
+
+a {
+    color: #00843d;
+}
+
+hr {
+        border: solid #CCCCCC  0.5px;
+        margin-bottom: 20px;
+}
+
+.red {
+    color: rgb(188, 29, 29);
+}
+
+.blue {
+    color: rgb(39, 39, 224);
+}
+
+.smallHeader{
+    font-size: 1rem;
+    font-weight: normal;
+border-bottom: solid 1px #CCCCCC;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+}

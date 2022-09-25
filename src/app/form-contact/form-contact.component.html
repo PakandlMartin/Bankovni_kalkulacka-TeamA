@@ -23,6 +23,24 @@
         <br />
 
         <div class="flex">
+ 
+          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
+            <label for="IC">IČO</label><br />
+            <input
+              type="string"
+              id="IC"
+              ngModel
+              name="IC"
+              minlength="8"
+              maxlength="8"
+              #IC="ngModel"
+              required
+            />
+            <div *ngIf="!IC.valid && IC.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
           <div *ngIf="selectedType === 'LEGAL_ENTITY'">
             <label for="name">Název firmy</label><br />
             <input
@@ -36,23 +54,6 @@
             />
 
             <div *ngIf="!companyName.valid && companyName.touched">
-              <p class="warning">Nesmí být prázdné</p>
-            </div>
-          </div>
-
-          <div *ngIf="selectedType === 'LEGAL_ENTITY'">
-            <label for="IC">IČO</label><br />
-            <input
-              type="number"
-              id="IC"
-              ngModel
-              name="IC"
-              minlength="8"
-              maxlength="8"
-              #IC="ngModel"
-              required
-            />
-            <div *ngIf="!IC.valid && IC.touched">
               <p class="warning">Nesmí být prázdné</p>
             </div>
           </div>
@@ -94,7 +95,7 @@
 
         <div class="flex">
           <div *ngIf="selectedType === 'INDIVIDUAL'">
-            <label for="IC">Rodné číslo</label><br />
+            <label for="birthNum">Rodné číslo</label><br />
             <input
               type="string"
               id="birthNum"
@@ -110,10 +111,10 @@
             </div>
           </div>
 
-          <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
+          <div *ngIf="selectedType === 'INDIVIDUAL'">
             <label for="nationality">Státní příslušnost</label><br />
             <input
-              type="text"
+              type="string"
               id="nationality"
               ngModel
               name="nationality"
@@ -128,7 +129,7 @@
           <div *ngIf="selectedType === 'OSVC'">
             <label for="IC">IČO</label><br />
             <input
-              type="number"
+              type="string"
               id="IC"
               ngModel
               name="IC"
@@ -138,6 +139,21 @@
               required
             />
             <div *ngIf="!IC.valid && IC.touched">
+              <p class="warning">Nesmí být prázdné</p>
+            </div>
+          </div>
+
+          <div *ngIf="selectedType === 'OSVC'">
+            <label for="nationality">Státní příslušnost</label><br />
+            <input
+              type="text"
+              id="nationality"
+              ngModel
+              name="nationality"
+              #nationality="ngModel"
+              required
+            />
+            <div *ngIf="!nationality.valid && nationality.touched">
               <p class="warning">Nesmí být prázdné</p>
             </div>
           </div>
