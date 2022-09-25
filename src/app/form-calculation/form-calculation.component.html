@@ -2,14 +2,17 @@
   <div class="form-calculation">
     <h2>Úvěrová kalkulačka</h2>
 
-  
-    <div class="inputs">
-      <div class="changeOfAmountInput">
-        <input
+    <div class="boxDiv">
+      <div class="flexBetween">
+        <span class="biggerFont">
+    Výše úvěru
+        </span>
+        <span class="changeOfAmountInput">
+          <input
           #amount
           type="number"
           id="amount"
-          placeholder="Výše úvěru"
+          placeholder="Zadejte částku"
           min="5000"
           max="1200000"
           name="amount"
@@ -18,45 +21,79 @@
           [(ngModel)] = "amountOfMoney"
         />
         <span>Kč</span>
+        </span>
       </div>
 
-      <div class="changeOfNumOfMonthsInput">
-        <input
-        lang="cs"
-          #numOfMonths
-          type="number"
-          id="time"
-          placeholder="Doba splácení"
-          min="6"
-          max="60"
-          (change)="changeOfNumOfMonths($event)"
-        
-        />
-        <span>měsíců</span>
+      <div class="flex rangeInput">
+        <input 
+        #amountRange
+        type="range" 
+        id="amountRange" 
+        name="amountRange" 
+        min="5000" 
+        max="1200000" 
+        value="50000" 
+        step="5000"
+        (change)="changeAmountRange($event)"
+        >
+      </div>
+      <div class="flexBetween">
+        <span>5 000</span>
+        <span>1 200 000</span>
+      </div>
+    </div>
+    <br><br>
 
+    <div class="boxDiv">
+      <div class="flexBetween">
+        <span class="biggerFont">
+    Doba splácení
+        </span>
+        <span class="changeOfNumOfMonthsInput">
+          <input
+            #numOfMonths
+            type="number"
+            id="time"
+            placeholder="Zadejte dobu"
+            min="6"
+            max="60"
+            (change)="changeOfNumOfMonths($event)"
+            name="numOfMonths"
+            [(ngModel)] = "numOfMonthsNg"
+          />
+          <span>měsíců</span>
+        </span>
       </div>
 
+      <div class="flex rangeInputSecond">
+        <input 
+        #numOfMonthsRange
+        type="range" 
+        id="numOfMonthsRange" 
+        name="numOfMonthsRange" 
+        min="6" 
+        max="60" 
+        value="12" 
+        step="2"
+        (change)="changeOfNumOfMonthsRange($event)"
+        >
+      </div>
+      <div class="flexBetween">
+        <span>6</span>
+        <span>60</span>
+      </div>
     </div>
 
-    <div class="flex" *ngIf="!calculationInputs.amount || !calculationInputs.numOfMonths">
-      <p>
-        Pro výpočet zadejte oba údaje. Děkujeme.
-      </p>
-    </div>
 
-    <div class="flex rangeInput">
-      <input 
-      #amountRange
-      type="range" 
-      id="amountRange" 
-      name="amountRange" 
-      min="5000" 
-      max="1200000" 
-      value="50000" 
-      step="5000"
-      (change)="changeAmountRange($event)"
-      >
-    </div>
+
+
+    
+
+    <!-- <div class="flex" *ngIf="!calculationInputs.amount || !calculationInputs.numOfMonths">
+     
+    </div> -->
+
+ 
 
     <div class="formDisplay" *ngIf="btnActive">
       <h2>Naše výhodná půjčka na vás čeká!</h2>

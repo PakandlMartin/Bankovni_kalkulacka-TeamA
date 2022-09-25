@@ -3,27 +3,34 @@
     color: white;
     max-width: 80%;
     max-width: 800px;
-    margin: auto auto;
+    margin: 20px auto;
     border-radius: 3px;
+    border: #00843d solid 12px;
 }
 
 .form-calculation > h2 {
     font-size: 2rem;
-    padding-top: 20px;
-    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 15px;
     text-align: center;
 }
 
-.inputs {
+.boxDiv{
+ border: rgba(221, 213, 213, 0.141) solid 3px;
+ padding-top: 15px;
+ padding-bottom: 10px;
+}
+
+.flexBetween {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    font-weight: bold;
-    gap: 20px;
+    max-width: 750px;
+    margin: auto auto;
 }
 
 .changeOfAmountInput > input {
-    min-width: 150px;
+    min-width: 300px;
     min-height: 30px;
     cursor: pointer;
     font-size: 1.1rem;
@@ -36,7 +43,7 @@
 }
 
 .changeOfNumOfMonthsInput > input {
-    min-width: 150px;
+    min-width: 252px;
     min-height: 30px;
     cursor: pointer;
     font-size: 1.1rem;
@@ -47,6 +54,7 @@
    margin-right: 5px;
 }
 
+
 span {
     font-size: 1.2rem;
 }
@@ -54,7 +62,6 @@ span {
 .flex {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 button:disabled {
@@ -114,8 +121,12 @@ border-radius: 3px;
     font-weight: bold;
 }
 
+.biggerFont {
+    font-size: 1.4rem;
+}
 
-input[type="range"] {
+
+.rangeInputSecond > input[type="range"] {
     -webkit-appearance: none;
     min-width: 100%;
     height: 10px;
@@ -126,7 +137,7 @@ input[type="range"] {
     cursor: pointer;
   }
   
-  input[type="range"]::-webkit-slider-thumb {
+  .rangeInputSecond > input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 35px;
     width: 35px;
@@ -137,7 +148,7 @@ input[type="range"] {
     transition: background .3s ease-in-out;
   }
   
-  input[type=range]::-webkit-slider-runnable-track  {
+ .rangeInputSecond > input[type=range]::-webkit-slider-runnable-track  {
     -webkit-appearance: none;
     box-shadow: none;
     border: none;
@@ -145,16 +156,53 @@ input[type="range"] {
     cursor: pointer;
   }
 
-  .rangeInput {
+  .rangeInputSecond {
     background-color: #05ff7a54;
-    padding: 15px;
+    padding: 20px 15px 20px 15px;
     margin: 20px 10px 10px 10px;
     border-radius: 10px;
   }
 
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #999;
+  .rangeInput {
+    background-color: white;
+    padding: 20px 15px 20px 15px;
+    margin: 20px 10px 10px 10px;
+    border-radius: 10px;
+  }
 
-    opacity: 1; /* Firefox */
+  .rangeInput > input[type="range"] {
+    -webkit-appearance: none;
+    min-width: 100%;
+    height: 10px;
+    background: #0db95dfc;
+    border-radius: 5px;
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  
+  .rangeInput > input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 40%;
+    background: #81d29d;
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+ .rangeInput > input[type=range]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+
+  ::placeholder { 
+    color: #999;
+    opacity: 1; 
   }
 
