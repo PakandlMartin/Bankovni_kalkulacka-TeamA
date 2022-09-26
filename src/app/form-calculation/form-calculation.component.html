@@ -4,52 +4,48 @@
 
     <div class="boxDiv">
       <div class="flexBetween">
-        <span class="biggerFont">
-    Výše úvěru
-        </span>
+        <span class="biggerFont"> Výše úvěru </span>
         <span class="changeOfAmountInput">
           <input
-          #amount
-          type="number"
-          id="amount"
-          placeholder="Zadejte částku"
-          min="5000"
-          max="1200000"
-          name="amount"
-          step="1000"
-          (change)="changeOfAmount($event)"
-          [(ngModel)] = "amountOfMoney"
-        />
-        <span>Kč</span>
+            #amount
+            type="number"
+            id="amount"
+            placeholder="Zadejte částku"
+            min="5000"
+            max="1200000"
+            name="amount"
+            step="1000"
+            (change)="changeOfAmount($event)"
+            [(ngModel)]="amountOfMoney"
+          />
+          <span>Kč</span>
         </span>
       </div>
 
       <div class="flex rangeInput">
-        <input 
-        #amountRange
-        type="range" 
-        id="amountRange" 
-        name="amountRange" 
-        min="5000" 
-        max="1200000" 
-        value="50000" 
-        step="5000"
-        [(ngModel)] = "amountOfMoney"
-        (change)="changeAmountRange($event)"
-        >
+        <input
+          #amountRange
+          type="range"
+          id="amountRange"
+          name="amountRange"
+          min="5000"
+          max="1200000"
+          value="50000"
+          step="5000"
+          [(ngModel)]="amountOfMoney"
+          (change)="changeAmountRange($event)"
+        />
       </div>
       <div class="flexBetween">
         <span>5 000</span>
         <span>1 200 000</span>
       </div>
     </div>
-    <br><br>
+    <br /><br />
 
     <div class="boxDiv">
       <div class="flexBetween">
-        <span class="biggerFont">
-    Doba splácení
-        </span>
+        <span class="biggerFont"> Doba splácení </span>
         <span class="changeOfNumOfMonthsInput">
           <input
             #numOfMonths
@@ -60,25 +56,25 @@
             max="60"
             (change)="changeOfNumOfMonths($event)"
             name="numOfMonths"
-            [(ngModel)] = "numOfMonthsNg"
+            [(ngModel)]="numOfMonthsNg"
           />
           <span>měsíců</span>
         </span>
       </div>
 
       <div class="flex rangeInputSecond">
-        <input 
-        #numOfMonthsRange
-        type="range" 
-        id="numOfMonthsRange" 
-        name="numOfMonthsRange" 
-        min="6" 
-        max="60" 
-        value="12" 
-        step="2"
-        (change)="changeOfNumOfMonthsRange($event)"
-        [(ngModel)] = "numOfMonthsNg"
-        >
+        <input
+          #numOfMonthsRange
+          type="range"
+          id="numOfMonthsRange"
+          name="numOfMonthsRange"
+          min="6"
+          max="60"
+          value="12"
+          step="2"
+          (change)="changeOfNumOfMonthsRange($event)"
+          [(ngModel)]="numOfMonthsNg"
+        />
       </div>
       <div class="flexBetween">
         <span>6</span>
@@ -86,22 +82,17 @@
       </div>
     </div>
 
-
-
-
-    
-
     <!-- <div class="flex" *ngIf="!calculationInputs.amount || !calculationInputs.numOfMonths">
      
     </div> -->
 
- 
-      <!-- {{p.total | number:'':'fr-FR'}} -->
+    <!-- {{p.total | number:'':'fr-FR'}} -->
 
     <div class="formDisplay" *ngIf="btnActive">
       <h2>Naše výhodná půjčka na vás čeká!</h2>
       <p>
-        Výše úvěru: <span class="bold"> {{ numberWithSpaces(amountInput) }} Kč </span>
+        Výše úvěru:
+        <span class="bold"> {{ numberWithSpaces(amountInput) }} Kč </span>
       </p>
       <p>
         Doba splácení:
@@ -110,23 +101,30 @@
       <hr />
       <p *ngIf="this.requestCalc.monthlyPayment">
         Měsíční splátka:
-        <span class="bold"> {{ numberWithSpaces(this.requestCalc.monthlyPayment) }} Kč </span>
+        <span class="bold">
+          {{ numberWithSpaces(this.requestCalc.monthlyPayment) }} Kč
+        </span>
       </p>
-      <p>Celková částka: {{  numberWithSpaces(this.requestCalc.overallAmount) }} Kč</p>
-      <p>Roční úroková sazba: {{ this.requestCalc.yearlyInterest | number:'' }} %</p>
-      <p>RPSN: {{ this.requestCalc.RPSN | number:''}} %</p>
-
+      <p>
+        Celková částka:
+        {{ numberWithSpaces(this.requestCalc.overallAmount) }} Kč
+      </p>
+      <p>
+        Roční úroková sazba:
+        {{ this.requestCalc.yearlyInterest | number: "" }} %
+      </p>
+      <p>RPSN: {{ this.requestCalc.RPSN | number: "" }} %</p>
 
       <p>
         {{
           this.requestCalc.fixedFee
-            ? "Fixní poplatek: " + 
-            numberWithSpaces(this.requestCalc.fixedFee)
-             + " Kč"
+            ? "Fixní poplatek: " +
+              numberWithSpaces(this.requestCalc.fixedFee) +
+              " Kč"
             : "Bez fixního poplatku!"
         }}
       </p>
-  </div>
+    </div>
 
     <div class="flex">
       <button
@@ -141,4 +139,3 @@
     </div>
   </div>
 </form>
-

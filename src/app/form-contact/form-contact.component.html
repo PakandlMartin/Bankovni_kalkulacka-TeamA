@@ -23,7 +23,6 @@
         <br />
 
         <div class="flex">
- 
           <div *ngIf="selectedType === 'LEGAL_ENTITY'">
             <label for="IC">IČO</label><br />
             <input
@@ -238,7 +237,6 @@
             </div>
           </div>
         </div>
-        
 
         <div *ngIf="selectedType === 'LEGAL_ENTITY'" class="selectPosition">
           <label for="position">Funkce</label><br />
@@ -335,7 +333,7 @@
               email
             />
             <div *ngIf="!email.valid && email.touched">
-              <p class="warning">Chybný formát </p>
+              <p class="warning">Chybný formát</p>
             </div>
           </div>
         </div>
@@ -358,37 +356,36 @@
           </div>
 
           <div class="flex-small">
+            <div class="inputSmaller">
+              <label for="descNumber">Č. popisné</label><br />
+              <input
+                type="number"
+                id="descNumber"
+                ngModel
+                name="descNumber"
+                #descNumber="ngModel"
+                required
+              />
+              <div *ngIf="!descNumber.valid && descNumber.touched">
+                <p class="warning small">Nesmí být prázdné</p>
+              </div>
+            </div>
 
-          <div class="inputSmaller">
-            <label for="descNumber">Č. popisné</label><br />
-            <input 
-              type="number"
-              id="descNumber"
-              ngModel
-              name="descNumber"
-              #descNumber="ngModel"
-              required
-            />
-            <div *ngIf="!descNumber.valid && descNumber.touched">
-              <p class="warning small">Nesmí být prázdné</p>
+            <div class="inputSmaller">
+              <label for="indicativeNumber"> Č. orientační</label><br />
+              <input
+                type="number"
+                id="indicativeNumber"
+                ngModel
+                name="indicativeNumber"
+                #indicativeNumber="ngModel"
+                required
+              />
+              <div *ngIf="!indicativeNumber.valid && indicativeNumber.touched">
+                <p class="warning small">Nesmí být prázdné</p>
+              </div>
             </div>
           </div>
-
-          <div class="inputSmaller ">
-            <label for="indicativeNumber"> Č. orientační</label><br />
-            <input 
-              type="number"
-              id="indicativeNumber"
-              ngModel
-              name="indicativeNumber"
-              #indicativeNumber="ngModel"
-              required
-            />
-            <div *ngIf="!indicativeNumber.valid && indicativeNumber.touched">
-              <p class="warning small">Nesmí být prázdné</p>
-            </div>
-          </div>
-        </div>
         </div>
 
         <div class="flex">
@@ -426,7 +423,7 @@
           </div>
         </div>
 
-        <button type="submit" class="" [disabled]="!f.valid" >ODESLAT</button>
+        <button type="submit" class="" [disabled]="!f.valid">ODESLAT</button>
       </div>
     </div>
   </form>

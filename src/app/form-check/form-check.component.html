@@ -1,171 +1,239 @@
 <div class="container">
-    <div *ngIf="infoAboutUserFromAPI">
-        <!-- {{infoAboutUserFromAPI.name}} -->
-        </div>
-        
-        <!-- *ngIf="infoAboutUserFromAPI.name === '' || null || undefined" -->
-        <div *ngIf="false"
-        >
-        <h1>Špatně zadané údaje. Vraťte se prosím na formulář a opravte neplatné údaje.</h1>
-        </div>
-        
-        <div *ngIf="infoAboutUserFromAPI.id">
-            <h1>Vaše žádost o úvěr</h1>
-            <p>ID: <span class="green bold">{{infoAboutUserFromAPI.id}}</span></p>
-        </div>
+  <div *ngIf="infoAboutUserFromAPI">
+    <!-- {{infoAboutUserFromAPI.name}} -->
+  </div>
 
-        <h3>Úvěr</h3>
-        <hr>
-        <div class="personalInformation">
-        <div *ngIf="infoAboutUserFromAPI.amount" class="item flex">
-            <span >VÝŠE ÚVĚRU</span>
-            <span class="bold black">{{
-                numberWithSpaces(infoAboutUserFromAPI.amount)}} Kč</span>
-        </div>
-        <div *ngIf="infoAboutUserFromAPI.numOfMonths" class="item flex">
-            <span >DOBA SPLÁCENÍ</span>
-            <span  class="bold black">{{ infoAboutUserFromAPI.numOfMonths}} měsíců</span>
-        </div>
-        <!-- <div class="item flex">
+  <!-- *ngIf="infoAboutUserFromAPI.name === '' || null || undefined" -->
+  <div *ngIf="false">
+    <h1>
+      Špatně zadané údaje. Vraťte se prosím na formulář a opravte neplatné
+      údaje.
+    </h1>
+  </div>
+
+  <div *ngIf="infoAboutUserFromAPI.id">
+    <h1>Vaše žádost o úvěr</h1>
+    <p>
+      ID: <span class="green bold">{{ infoAboutUserFromAPI.id }}</span>
+    </p>
+  </div>
+
+  <h3>Úvěr</h3>
+  <hr />
+  <div class="personalInformation">
+    <div *ngIf="infoAboutUserFromAPI.amount" class="item flex">
+      <span>VÝŠE ÚVĚRU</span>
+      <span class="bold black"
+        >{{ numberWithSpaces(infoAboutUserFromAPI.amount) }} Kč</span
+      >
+    </div>
+    <div *ngIf="infoAboutUserFromAPI.numOfMonths" class="item flex">
+      <span>DOBA SPLÁCENÍ</span>
+      <span class="bold black"
+        >{{ infoAboutUserFromAPI.numOfMonths }} měsíců</span
+      >
+    </div>
+    <!-- <div class="item flex">
             <span >MĚSÍČNÍ SPLÁTKA</span>
             <span  class="bold black">{{infoAboutUserFromAPI.monthlyPayment | currency:'':'' }} Kč </span>
         </div> -->
-        <!-- <div class="item flex">
+    <!-- <div class="item flex">
             <span >CELKOVÁ ČÁSTKA</span>
             <span  class="bold black">{{infoAboutUserFromAPI.overallAmount | currency:'':''}} Kč</span>
         </div> -->
-        <!-- <div class="item flex">
+    <!-- <div class="item flex">
             <span >ROČNÍ ÚROKOVÁ SAZBA</span>
             <span class="bold black">{{ infoAboutUserFromAPI.yearlyInterest | number:'.1' }} %</span>
         </div> -->
-        <!-- <div class="item flex">
+    <!-- <div class="item flex">
             <span >RPSN</span>
             <span class="bold black">{{ this.infoAboutUserFromAPI.RPSN | number:'.1'}} %</span>
         </div> -->
-        <!-- <div *ngIf="infoAboutUserFromAPI.fixedFee" class="item flex">
+    <!-- <div *ngIf="infoAboutUserFromAPI.fixedFee" class="item flex">
             <span >FIXNÍ POPLATEK</span>
             <span  class="bold black">{{ infoAboutUserFromAPI.fixedFee | currency:'':''}} Kč</span>
         </div> -->
-        </div>
-       
-<h3>Osobní údaje </h3>
+  </div>
 
-        <hr>
-        <div *ngIf="infoAboutUserFromAPI.applicantType" class="personalInformation">
-            <div class="item flex">
-                <span >PRÁVNÍ STATUS</span>
-<span *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' " class="bold black">Fyzická osoba</span>
-<span  *ngIf="infoAboutUserFromAPI.applicantType === 'OSVC' " class="bold black">Podnikatel fyzická osoba</span>
-<span *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'" class="bold black">Právnická osoba</span>
-            </div>
+  <h3>Osobní údaje</h3>
 
-           
+  <hr />
+  <div *ngIf="infoAboutUserFromAPI.applicantType" class="personalInformation">
+    <div class="item flex">
+      <span>PRÁVNÍ STATUS</span>
+      <span
+        *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL'"
+        class="bold black"
+        >Fyzická osoba</span
+      >
+      <span
+        *ngIf="infoAboutUserFromAPI.applicantType === 'OSVC'"
+        class="bold black"
+        >Podnikatel fyzická osoba</span
+      >
+      <span
+        *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+        class="bold black"
+        >Právnická osoba</span
+      >
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC'" class="item flex">
-            <span >JMÉNO</span>
-            <span class="bold black">{{infoAboutUserFromAPI.name}}</span>
-        </div>
+    <div
+      *ngIf="
+        infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' ||
+        infoAboutUserFromAPI.applicantType === 'OSVC'
+      "
+      class="item flex"
+    >
+      <span>JMÉNO</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.name }}</span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC'" class="item flex">
-            <span >PŘÍJMENÍ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.surname}}</span>
-        </div>
+    <div
+      *ngIf="
+        infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' ||
+        infoAboutUserFromAPI.applicantType === 'OSVC'
+      "
+      class="item flex"
+    >
+      <span>PŘÍJMENÍ</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.surname }}</span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL'" class="item flex">
-            <span >RODNÉ ČÍSLO
-                </span>
-            <span class="bold black">
-               {{infoAboutUserFromAPI.birthNum}}
-            </span>
-        </div>
+    <div
+      *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL'"
+      class="item flex"
+    >
+      <span>RODNÉ ČÍSLO </span>
+      <span class="bold black">
+        {{ infoAboutUserFromAPI.birthNum }}
+      </span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC' " class="item flex">
-            <span >STÁTNÍ PŘÍSLUŠNOST
-                </span>
-            <span class="bold black">
-               {{infoAboutUserFromAPI.nationality}}
-            </span>
-        </div>
+    <div
+      *ngIf="
+        infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' ||
+        infoAboutUserFromAPI.applicantType === 'OSVC'
+      "
+      class="item flex"
+    >
+      <span>STÁTNÍ PŘÍSLUŠNOST </span>
+      <span class="bold black">
+        {{ infoAboutUserFromAPI.nationality }}
+      </span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' || infoAboutUserFromAPI.applicantType === 'OSVC' " class="item flex">
-            <span > IČO
-                </span>
-            <span class="bold black">
-               {{infoAboutUserFromAPI.IC}}
-            </span>
-        </div>
+    <div
+      *ngIf="
+        infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' ||
+        infoAboutUserFromAPI.applicantType === 'OSVC'
+      "
+      class="item flex"
+    >
+      <span> IČO </span>
+      <span class="bold black">
+        {{ infoAboutUserFromAPI.IC }}
+      </span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'" class="item flex">
-            <span > NÁZEV FIRMY
-                </span>
-            <span class="bold black">
-               {{infoAboutUserFromAPI.companyName}}
-            </span>
-        </div>
+    <div
+      *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+      class="item flex"
+    >
+      <span> NÁZEV FIRMY </span>
+      <span class="bold black">
+        {{ infoAboutUserFromAPI.companyName }}
+      </span>
+    </div>
 
-        <h4 class="smallHeader" *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'">
-            Jednající osoba
-          </h4>
+    <h4
+      class="smallHeader"
+      *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+    >
+      Jednající osoba
+    </h4>
 
-          <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
-            <span >JMÉNO</span>
-            <span class="bold black">{{infoAboutUserFromAPI.name}}</span>
-        </div>
+    <div
+      *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+      class="item flex"
+    >
+      <span>JMÉNO</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.name }}</span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
-            <span >PŘÍJMENÍ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.surname}}</span>
-        </div>
+    <div
+      *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+      class="item flex"
+    >
+      <span>PŘÍJMENÍ</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.surname }}</span>
+    </div>
 
-        <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'" class="item flex">
-            <span >FUNKCE</span>
-            <span class="bold black">{{infoAboutUserFromAPI.position}}</span>
-        </div>
+    <div
+      *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'"
+      class="item flex"
+    >
+      <span>FUNKCE</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.position }}</span>
+    </div>
 
-        <div class="item flex">
-            <span >TELEFON</span>
-            <span class="bold black">{{infoAboutUserFromAPI.phone}}</span>
-        </div>
-        <div class="item flex">
-            <span >EMAIL</span>
-            <span class="bold black">{{infoAboutUserFromAPI.email}}</span>
-        </div>
-        <div class="item flex">
-            <span >ULICE</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.street}}</span>
-        </div>
-        <div class="item flex">
-            <span >ČÍSLO POPISNÉ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.descNumber}}</span>
-        </div>
-        <div class="item flex">
-            <span >ČÍSLO ORIENTAČNÍ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.indicativeNumber}}</span>
-        </div>
-        <div class="item flex">
-            <span >OBEC</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.city}}</span>
-        </div>
-        <div class="item flex">
-            <span >PSČ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.postalCode}}</span>
-        </div>
-        </div>
-        
-        <h3>Stav žádosti</h3>
-        <hr>
-        <div class="personalInformation">
-            <div class="item flex">
-                <span >DATUM PODÁNÍ ŽÁDOSTI</span>
-                <span class="bold black">{{infoAboutUserFromAPI.created | date:'shortDate'}}</span>
-            </div>
-            <div class="item flex">
-                <span >STAV</span>
+    <div class="item flex">
+      <span>TELEFON</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.phone }}</span>
+    </div>
+    <div class="item flex">
+      <span>EMAIL</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.email }}</span>
+    </div>
+    <div class="item flex">
+      <span>ULICE</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.address.street }}</span>
+    </div>
+    <div class="item flex">
+      <span>ČÍSLO POPISNÉ</span>
+      <span class="bold black">{{
+        infoAboutUserFromAPI.address.descNumber
+      }}</span>
+    </div>
+    <div class="item flex">
+      <span>ČÍSLO ORIENTAČNÍ</span>
+      <span class="bold black">{{
+        infoAboutUserFromAPI.address.indicativeNumber
+      }}</span>
+    </div>
+    <div class="item flex">
+      <span>OBEC</span>
+      <span class="bold black">{{ infoAboutUserFromAPI.address.city }}</span>
+    </div>
+    <div class="item flex">
+      <span>PSČ</span>
+      <span class="bold black">{{
+        infoAboutUserFromAPI.address.postalCode
+      }}</span>
+    </div>
+  </div>
 
-                <span  *ngIf="infoAboutUserFromAPI.status === 'PENDING' " class="bold green">Nerozhodnutá</span>
-                <span  *ngIf="infoAboutUserFromAPI.status === 'APPROVED' " class="bold blue">Schválena</span>
-                <span  *ngIf="infoAboutUserFromAPI.status === 'CANCELLED' " class="bold red">Zamítnuta</span>
-            </div>
+  <h3>Stav žádosti</h3>
+  <hr />
+  <div class="personalInformation">
+    <div class="item flex">
+      <span>DATUM PODÁNÍ ŽÁDOSTI</span>
+      <span class="bold black">{{
+        infoAboutUserFromAPI.created | date: "shortDate"
+      }}</span>
+    </div>
+    <div class="item flex">
+      <span>STAV</span>
+
+      <span *ngIf="infoAboutUserFromAPI.status === 'PENDING'" class="bold green"
+        >Nerozhodnutá</span
+      >
+      <span *ngIf="infoAboutUserFromAPI.status === 'APPROVED'" class="bold blue"
+        >Schválena</span
+      >
+      <span *ngIf="infoAboutUserFromAPI.status === 'CANCELLED'" class="bold red"
+        >Zamítnuta</span
+      >
+    </div>
+  </div>
 </div>
-
-

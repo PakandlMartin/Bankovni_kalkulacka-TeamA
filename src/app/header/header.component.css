@@ -22,17 +22,17 @@ nav {
 
 .flex {
   display: flex;
-  gap: 25px
+  gap: 25px;
 }
 
-.nav-links a{
-  color: #333;;
+.nav-links a {
+  color: #333;
   text-decoration: none;
   letter-spacing: 0.5px;
   font-size: 1.1rem;
 }
 
-.nav-links li{
+.nav-links li {
   list-style: none;
 }
 
@@ -40,6 +40,3 @@ nav {
   border-bottom: #00843d solid 3px;
   color: #00843d;
 }
-
-
-
