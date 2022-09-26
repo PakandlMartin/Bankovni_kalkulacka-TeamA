@@ -1,7 +1,43 @@
 .container {
-  border: 1px solid green;
-  width: 30%;
+
+  width: 20%;
   background-color: white;
   color: #00843d;
+  position: absolute;
+  margin-left: 500px;
+  margin-top: 80px;
+  font-size: 0.8em;
   padding-left: 20px;
+  padding-top: 10px;
+  filter: drop-shadow(0 0 0.50rem #00000045);
+}
+
+hr{
+  width: 90%;
+}
+.button-detail-approve {
+  background: white;
+  color: #00843d;
+  border: 2px solid #00843d;
+  align-items: center;
+  line-height: 1.45em;
+  cursor: pointer;
+  font-weight: bold;
+  margin: auto 10px 20px;
+
+  width: 35%;
+  padding: 5px;
+}
+
+.button-detail-cancel {
+  background: white;
+  color: darkred;
+  border: 2px solid darkred;
+  align-items: center;
+  line-height: 1.45em;
+  cursor: pointer;
+  font-weight: bold;
+  margin: auto 10px 20px;
+  width: 35%;
+  padding: 5px;
 }

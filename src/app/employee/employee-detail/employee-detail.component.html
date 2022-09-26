@@ -1,4 +1,35 @@
 
-<p>Detail funguje</p>
+<div class="container" *ngIf="!!client">
+
+    <strong>Klient</strong>
+    <p>{{client.name}} {{client.surname}}</p>
+    <p>Typ klienta: {{formatTypeOfClient(client.applicantType)}}</p>
+    <p>Id klienta: {{client.id}}</p>
+    <p>Rodné číslo: {{client.birthNum}}</p>
+    <p>Národnost: {{client.nationality}}</p>
+    <p>Id klienta: {{client.id}}</p>
+    <p>{{client.companyName}}</p>
+    <hr>
+  
+    <strong>Adresa klienta</strong>
+    <p>{{client.address.street}} {{client.address.indicativeNumber}}/{{client.address.descNumber}}</p>
+    <p>{{client.address.city}}</p>
+    <p>{{client.address.postalCode}}</p>
+    <hr>
+    <strong>Kontaktní údaje</strong><br/>
+    <p>Email: {{client.email}}</p>
+    <p>Tel.číslo: {{client.phone}}</p>
+    <hr>
+  
+    <p><strong>Detail půjčky</strong></p>
+    <p>Výše půjčky: {{numberWithSpaces(client.amount)}} Kč</p>
+  
+    <p>Doba splácení: {{client.numOfMonths }} měsíců</p>
+    <p>Datum žádosti: {{client.created | date: 'dd.M.YYYY'}}</p>
+    <p>Status žádosti: <strong>{{formatStatus(client.status) }}</strong></p>
+  
+    <button type="submit" class="button-detail-approve" (click)="onApproveRequest(client.id)">Schválit</button>
+    <button type="submit" class="button-detail-cancel" (click)="onCancelRequest(client.id)">Zamítnout</button>
+  </div>
 
 

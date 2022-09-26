@@ -1,21 +1,23 @@
+body {
+  background-color: white;
+}
+
 h1 {
   color: #00843d;
   margin-left: 20px;
 }
 
-.top-container {
 
-}
 
 .overview {
   background-color: white;
   color: #00843d;
   width: 20%;
-  border: 1px solid #00843d;
-  font-size: 10px;
+  font-size: 0.8em;
   margin: 5px 30px 10px 75px;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-top: 10px;
+  filter: drop-shadow(0 0 0.50rem #00000045);
 
 
 }
@@ -28,15 +30,17 @@ a {
 button {
   background: white;
   color: #00843d;
-  border: 1px solid #00843d;
+  font-family: Koop, Arial, serif;
+  border: 1px solid #00843d; ;
   align-items: center;
   line-height: 1.45em;
   cursor: pointer;
+  position: relative;
   padding: 0.75rem 1.25rem;
   font-weight: bold;
-  margin: 30px 30px 10px 75px;
-
+  margin: 20px 2px 10px 10px;
 }
 
-
-
+.active, .a:active {
+ font-weight: bold;
+}
