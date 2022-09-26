@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import { HttpRequestsService } from '../http-requests.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,8 @@ export class AuthComponent implements OnInit {
 
   clientExist: boolean = true;
 
-  constructor(private httpRequestsService: HttpRequestsService) { }
+  constructor(private httpRequestsService: HttpRequestsService, private router: Router, private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,8 @@ export class AuthComponent implements OnInit {
     this.clientExist = false
     console.log(this.token)
    
+
+    this.router.navigate(['/form-check'], {relativeTo: this.route});
   }
 
 }

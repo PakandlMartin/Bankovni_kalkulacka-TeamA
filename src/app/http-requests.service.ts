@@ -10,8 +10,6 @@ export interface AuthResponseData {
   token: string
 }
 
-
-
 export interface GetResponseData {
   position: string,
   amount: number,
@@ -31,7 +29,27 @@ export class HttpRequestsService {
 
   error = new Subject;
   calculationInfo: object = {};
-  infoAboutUser: object = {};
+  infoAboutUser: object = {
+    applicantType: undefined,
+    name: undefined,
+    surname: undefined,
+    birthNum: undefined,
+    nationality: undefined,
+    email: undefined,
+    phone: undefined,
+    IC: undefined,
+    position: undefined,
+    companyName: undefined,
+    amount: undefined,
+    numOfMonths: undefined,
+    address: {
+      street: undefined,
+      descNumber: undefined,
+      indicativeNumber: undefined,
+      city: undefined,
+      postalCode: undefined
+    }
+  };
   token = "qdsMkMpb16";
   myToken: string;
 
@@ -67,7 +85,10 @@ return this.http.post<any>(
 
 getInfoAboutUser(id: string) {
   this.http.get<any>('http://localhost:8000/request/' + id).subscribe(responseData =>{
-    console.log(responseData)
+    this.infoAboutUser = responseData
+    console.log(this.infoAboutUser)
+  }, error => {
+    this.error.next(error.message);
   })
 }
 

@@ -6,7 +6,7 @@
   background-color: #00843d;
   color: white;
   font-family: Koop, Arial, serif;
-
+  box-shadow: 0 0 1.25rem rgb(51 51 51 / 40%);
 }
 
 button {

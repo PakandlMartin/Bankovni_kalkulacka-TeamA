@@ -1,8 +1,6 @@
 import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 
-
-
 import { UserInfoService } from '../user-info.service';
 import {ActivatedRoute, Router} from "@angular/router";
 
