@@ -2,8 +2,6 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 import { UserInfoService } from '../user-info.service';
 
-
-
 @Component({
   selector: 'app-form-details',
   templateUrl: './form-details.component.html',

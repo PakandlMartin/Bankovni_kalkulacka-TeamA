@@ -82,6 +82,8 @@ console.log(this.userInfoService.infoAboutUser)
 
   onSubmit() {
 
+    
+
     this.signValuesFromInputs()
 
     console.log(this.client);
@@ -95,7 +97,7 @@ console.log(this.userInfoService.infoAboutUser)
       localStorage.setItem("userInfoCalculation",JSON.stringify(this.httpRequestsService.calculationInfo))
     })
 
-    this.router.navigate(['form-details'], {relativeTo: this.route});
+    this.router.navigate(['form-details/'], {relativeTo: this.route});
   }
 }
 
