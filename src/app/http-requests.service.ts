@@ -92,13 +92,11 @@ export class HttpRequestsService {
       )
       .subscribe(responseData => {
         this.calculationInfo = responseData.body
-        // return responseData.body
+        localStorage.setItem("userInfoCalculation", JSON.stringify(responseData.body))
       }, error => {
         this.error.next(error.message);
       });
     }
-
-
 
 postInfoAboutUser(infoAboutUserInput): Observable<any> {
   const httpPostBody = infoAboutUserInput;

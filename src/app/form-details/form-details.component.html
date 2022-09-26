@@ -17,13 +17,13 @@
 
         <h3>Úvěr</h3>
         <hr>
-        <div *ngIf="infoAboutUserFromAPI" class="personalInformation">
+        <div *ngIf="infoAboutUserFromAPI.amount" class="personalInformation">
         <div class="item flex">
             <span >VÝŠE ÚVĚRU</span>
             <span class="bold black">{{ 
                 numberWithSpaces(infoAboutUserFromAPI.amount) }} Kč</span>
         </div>
-        <div class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.numOfMonths"  class="item flex">
             <span >DOBA SPLÁCENÍ</span>
             <span  class="bold black">{{ 
                 numberWithSpaces(infoAboutUserFromAPI.numOfMonths) }} měsíců</span>
@@ -34,7 +34,7 @@
                 numberWithSpaces(infoAboutUserFromAPI.monthlyPayment)}} Kč </span>
 
         </div>
-        <div class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.overallAmount" class="item flex">
             <span >CELKOVÁ ČÁSTKA</span>
             <span  class="bold black">{{
                 numberWithSpaces(
@@ -42,12 +42,12 @@
                 )
             }} Kč</span>
         </div>
-        <div class="item flex">
+        <div class="item flex" *ngIf="infoAboutUserFromAPI.yearlyInterest">
             <span >ROČNÍ ÚROKOVÁ SAZBA</span>
             <span class="bold black">{{ 
                 infoAboutUserFromAPI.yearlyInterest | number:'' }} %</span>
         </div>
-        <div class="item flex">
+        <div class="item flex" *ngIf="this.infoAboutUserFromAPI.RPSN" >
             <span >RPSN</span>
             <span class="bold black">{{ 
                 this.infoAboutUserFromAPI.RPSN | number:''}} %</span>
@@ -64,7 +64,7 @@
 
         <hr>
         <div class="personalInformation">
-            <div class="item flex">
+            <div class="item flex" *ngIf="infoAboutUserFromAPI.applicantType" >
                 <span >PRÁVNÍ STATUS</span>
 <span *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' " class="bold black">Fyzická osoba</span>
 <span  *ngIf="infoAboutUserFromAPI.applicantType === 'OSVC' " class="bold black">Podnikatel fyzická osoba</span>

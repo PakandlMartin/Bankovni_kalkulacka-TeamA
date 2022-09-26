@@ -92,7 +92,7 @@ console.log(this.userInfoService.infoAboutUser)
 
       localStorage.setItem("userInfo",JSON.stringify(responseData.body))
 
-      localStorage.setItem("userInfoCalculation",JSON.stringify(this.httpRequestsService.calculationInfo))
+      // localStorage.setItem("userInfoCalculation",JSON.stringify(this.httpRequestsService.calculationInfo))
 
       this.router.navigate(['form-details/' + responseData.body.id
     ], {relativeTo: this.route});

@@ -12,6 +12,7 @@ export class FormDetailsComponent implements OnInit, DoCheck {
 
   requestCalc;
 
+
   infoCalculateFromLocaleStorage = localStorage.getItem("userInfoCalculation");
 
   infoAboutUserAPILocaleStorage = localStorage.getItem("userInfo")
@@ -51,6 +52,7 @@ console.log( this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAbout
       ...JSON.parse(this.infoCalculateFromLocaleStorage)};
 
       this.idParam = this.infoAboutUserFromAPI.id
+    
   }
 
 
