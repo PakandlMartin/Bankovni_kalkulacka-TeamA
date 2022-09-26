@@ -2,22 +2,27 @@
 <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
   <div class="container">
         <label>Login</label>
-        <input
-          type="text"
-          id="text"
-          ngModel
-          name="login"
-          required email>
+        <div class="flex">
+          <input
+            type="text"
+            id="text"
+            ngModel
+            name="login"
+            required email>
+        </div>
         <label>Heslo</label>
-        <input
-          type="password"
-          id="password"
-          ngModel
-          name="password"
-          required
-          minlength="6">
+        <div class="flex">
+          <input
+            type="password"
+            id="password"
+            ngModel
+            name="password"
+            required
+            minlength="6">
+        </div>
         <hr>
-
-        <button type="submit" >PŘIHLÁSIT SE</button>
+<div class="flex">
+  <button type="submit" class="btn" >PŘIHLÁSIT SE</button>
+</div>
     </div>
 </form>

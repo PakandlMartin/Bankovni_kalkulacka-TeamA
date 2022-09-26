@@ -26,8 +26,6 @@ export class AuthEmployeeComponent implements OnInit {
     this.authService.isLoggedIn();
   }
 
-
-
   onSubmit(form: NgForm) {
     this.employee.login = this.signUpForm.value.login;
     this.employee.password = this.signUpForm.value.password;
