@@ -51,6 +51,31 @@ export class HttpRequestsService {
       postalCode: undefined
     }
   };
+
+  infoAboutUserFromApi = {
+    applicantType: undefined,
+    name: undefined,
+    surname: undefined,
+    birthNum: undefined,
+    nationality: undefined,
+    email: undefined,
+    phone: undefined,
+    IC: undefined,
+    position: undefined,
+    companyName: undefined,
+    amount: undefined,
+    numOfMonths: undefined,
+    monthlyPayment: undefined,
+    address: {
+      street: undefined,
+      descNumber: undefined,
+      indicativeNumber: undefined,
+      city: undefined,
+      postalCode: undefined
+    }
+  }
+
+
   token = "qdsMkMpb16";
   myToken: string;
 
@@ -92,6 +117,21 @@ getInfoAboutUser(id: string) {
     this.error.next(error.message);
   })
 }
+
+
+getInfoAboutUserFromApi(id: string) {
+  this.http.get<any>('http://localhost:8000/request/' + id).subscribe(responseData =>{
+    this.infoAboutUserFromApi = responseData
+    localStorage.setItem("userInfoAPI", JSON.stringify(responseData))
+    console.log(responseData)
+  }, error => {
+    this.error.next(error.message);
+  })
+}
+
+
+
+
 
 // showClients(): Observable<[{position: string, amount: number, numOfMonths: number, created: string,
 //   status: string, id: string, name: string, surname: string, companyName: string, applicantType: string}]> {

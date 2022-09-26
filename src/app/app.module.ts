@@ -30,7 +30,8 @@ const appRoutes: Routes = [
   { path: 'detail', component: EmployeeComponent },
   { path: 'employee/detail', component: EmployeeComponent, children: [
       {path: ':id', component: EmployeeDetailComponent}
-    ] },{ path: 'form-check', component: FormCheckComponent }
+    ] }
+  ,{ path: 'login/form-check/:id', component: FormCheckComponent }
 
 ];
 

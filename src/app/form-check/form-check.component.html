@@ -9,7 +9,7 @@
         <h1>Špatně zadané údaje. Vraťte se prosím na formulář a opravte neplatné údaje.</h1>
         </div>
         
-        <div>
+        <div *ngIf="infoAboutUserFromAPI.id">
             <h1>Vaše žádost o úvěr</h1>
             <p>ID: <span class="green bold">{{infoAboutUserFromAPI.id}}</span></p>
         </div>
@@ -17,12 +17,12 @@
         <h3>Úvěr</h3>
         <hr>
         <div class="personalInformation">
-        <div class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.amount" class="item flex">
             <span >VÝŠE ÚVĚRU</span>
             <span class="bold black">{{
                 numberWithSpaces(infoAboutUserFromAPI.amount)}} Kč</span>
         </div>
-        <div class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.numOfMonths" class="item flex">
             <span >DOBA SPLÁCENÍ</span>
             <span  class="bold black">{{ infoAboutUserFromAPI.numOfMonths}} měsíců</span>
         </div>
@@ -51,7 +51,7 @@
 <h3>Osobní údaje </h3>
 
         <hr>
-        <div class="personalInformation">
+        <div *ngIf="infoAboutUserFromAPI.applicantType" class="personalInformation">
             <div class="item flex">
                 <span >PRÁVNÍ STATUS</span>
 <span *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' " class="bold black">Fyzická osoba</span>

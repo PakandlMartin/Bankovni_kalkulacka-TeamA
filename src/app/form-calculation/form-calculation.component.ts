@@ -60,7 +60,7 @@ this.numOfMonthsNg = this.numOfMOnthsInput
 
     this.router.navigate(['/form'], {relativeTo: this.route});
 
-    console.log(this.userInfoService)
+   
   }
 
   changeOfAmount(amountChange) {
@@ -68,7 +68,6 @@ this.numOfMonthsNg = this.numOfMOnthsInput
     this.calculationInputs.amount = Number(this.amountInput)
     this.changeBtnActive();
    this.httpRequestsService.postCalculationInfo((this.calculationInputs));
-   console.log(this.calculationInputs)
   }
 
   changeAmountRange(amountChangeRange) {
@@ -77,9 +76,6 @@ this.numOfMonthsNg = this.numOfMOnthsInput
     this.changeBtnActive();
    this.httpRequestsService.postCalculationInfo((this.calculationInputs));
    console.log(this.calculationInputs)
-  //  amountChange = amountChangeRange.target.value
-  // console.log(amountChange)
-
   }
 
   changeOfNumOfMonths(numChange) {

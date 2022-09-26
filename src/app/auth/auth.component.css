@@ -3,8 +3,10 @@
   max-width: 500px;
 margin: 25vh auto;
   text-align: left;
-  background-color: #00843d;
+  background-color: #0a9935;
   color: white;
+  box-shadow: rgb(51 51 51 / 15%) 0px 0px 1.25rem;
+  border-radius: 5px;
 }
 
 button {
@@ -57,4 +59,7 @@ button:hover {
   border: rgb(172, 51, 51) solid 3px
 }
 
+hr {
+  border: solid #ffffff  0.5px
+}
 

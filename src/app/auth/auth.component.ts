@@ -15,8 +15,7 @@ export class AuthComponent implements OnInit {
   }
 
   token: string;
-
-  clientExist: boolean = true;
+clientExist: boolean = true;
 
   constructor(private httpRequestsService: HttpRequestsService, private router: Router, private route: ActivatedRoute
     ) { }
@@ -25,13 +24,16 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.httpRequestsService.getInfoAboutUser(this.token)
-    this.client.token = this.signUpForm.value.token;
-    this.clientExist = false
-    console.log(this.token)
-   
+    // this.client.token = this.signUpForm.value.token;
+    this.httpRequestsService.getInfoAboutUserFromApi(this.token);
+    // this.clientExist = false;
+    console.log(this.token);
 
-    this.router.navigate(['/form-check'], {relativeTo: this.route});
+    this.router.navigate(['form-check/' + this.token], {relativeTo: this.route});
   }
 
 }
+
+
+// this.router.navigate(['form-details/' + responseData.body.id
+//     ], {relativeTo: this.route});

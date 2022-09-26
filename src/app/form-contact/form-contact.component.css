@@ -130,6 +130,21 @@ margin: 20px 80px ;
     margin: 35px auto;
 }
 
+button:disabled {
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  color: rgba(254, 254, 254, 0.726);
+  background-color: rgb(8, 115, 15);
+  cursor: auto;
+}
+
+button:disabled:hover {
+  box-shadow: none;
+}
+
+
+
 button:hover {
   box-shadow: 0 0 6px rgb(8, 115, 15);
 }
@@ -166,4 +181,16 @@ hr {
 
 .small {
 font-size: 0.6rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
