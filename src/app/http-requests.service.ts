@@ -42,6 +42,7 @@ export class HttpRequestsService {
     companyName: undefined,
     amount: undefined,
     numOfMonths: undefined,
+    monthlyPayment: undefined,
     address: {
       street: undefined,
       descNumber: undefined,

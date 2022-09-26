@@ -13,6 +13,10 @@ export class FormDetailsComponent implements OnInit, DoCheck {
 
   requestCalc;
 
+  infoCalculateFromLocaleStorage = localStorage.getItem("userInfoCalculation");
+
+  infoAboutUserAPILocaleStorage = localStorage.getItem("userInfo")
+
   constructor(private userInfoService: UserInfoService, private httpRequestsService: HttpRequestsService) { }
 
   infoAboutUserFromAPI = null;
@@ -21,17 +25,20 @@ export class FormDetailsComponent implements OnInit, DoCheck {
     console.log(this.userInfoService.infoAboutUser.name)
     console.log(this.infoAboutUserFromAPI)
   }
-  
-  ngOnInit(): void {
+
+  numberWithSpaces(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
-
   
-
+  ngOnInit(): void {
+    this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserAPILocaleStorage).id)
+  }
+  
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
-      ...this.userInfoService.infoAboutUser, 
-      ...this.httpRequestsService.calculationInfo};
+      ...JSON.parse(this.infoAboutUserAPILocaleStorage), 
+      ...JSON.parse(this.infoCalculateFromLocaleStorage)};
   }
 
 }

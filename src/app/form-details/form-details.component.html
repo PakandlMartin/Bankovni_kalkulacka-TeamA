@@ -12,40 +12,51 @@
         
         <div>
             <h1>Vaše žádost o úvěr</h1>
-            <p>Jako přístupový údaj k žádosti vám slouží následují ID: <span class="green bold">{{infoAboutUserFromAPI.id}}</span> . Pomocí něho se můžete přihlásit v menu, kde naleznete položku MOJE ŽÁDOST.</p>
-            <p>Stav vaši žádosti si můžete také ověřit <a href="http://localhost:4200/form-check">zde</a></p>
+            <p>Jako přístupový údaj k žádosti vám slouží následují ID: <span class="green bold">{{infoAboutUserFromAPI.id}}</span>. Pomocí něho se můžete přihlásit v menu, kde naleznete položku MOJE ŽÁDOST.</p>
         </div>
 
         <h3>Úvěr</h3>
         <hr>
-        <div class="personalInformation">
+        <div *ngIf="infoAboutUserFromAPI" class="personalInformation">
         <div class="item flex">
             <span >VÝŠE ÚVĚRU</span>
-            <span class="bold black">{{ infoAboutUserFromAPI.amount | currency:'':'' }} Kč</span>
+            <span class="bold black">{{ 
+                numberWithSpaces(infoAboutUserFromAPI.amount) }} Kč</span>
         </div>
         <div class="item flex">
             <span >DOBA SPLÁCENÍ</span>
-            <span  class="bold black">{{ infoAboutUserFromAPI.numOfMonths}} měsíců</span>
+            <span  class="bold black">{{ 
+                numberWithSpaces(infoAboutUserFromAPI.numOfMonths) }} měsíců</span>
         </div>
-        <div class="item flex">
+        <div *ngIf="infoAboutUserFromAPI.monthlyPayment" class="item flex">
             <span >MĚSÍČNÍ SPLÁTKA</span>
-            <span  class="bold black">{{infoAboutUserFromAPI.monthlyPayment | currency:'':'' }} Kč </span>
+            <span  class="bold black">{{
+                numberWithSpaces(infoAboutUserFromAPI.monthlyPayment)}} Kč </span>
+
         </div>
         <div class="item flex">
             <span >CELKOVÁ ČÁSTKA</span>
-            <span  class="bold black">{{infoAboutUserFromAPI.overallAmount | currency:'':''}} Kč</span>
+            <span  class="bold black">{{
+                numberWithSpaces(
+                    infoAboutUserFromAPI.overallAmount 
+                )
+            }} Kč</span>
         </div>
         <div class="item flex">
             <span >ROČNÍ ÚROKOVÁ SAZBA</span>
-            <span class="bold black">{{ infoAboutUserFromAPI.yearlyInterest | number:'.1' }} %</span>
+            <span class="bold black">{{ 
+                infoAboutUserFromAPI.yearlyInterest | number:'' }} %</span>
         </div>
         <div class="item flex">
             <span >RPSN</span>
-            <span class="bold black">{{ this.infoAboutUserFromAPI.RPSN | number:'.1'}} %</span>
+            <span class="bold black">{{ 
+                this.infoAboutUserFromAPI.RPSN | number:''}} %</span>
         </div>
         <div *ngIf="infoAboutUserFromAPI.fixedFee" class="item flex">
             <span >FIXNÍ POPLATEK</span>
-            <span  class="bold black">{{ infoAboutUserFromAPI.fixedFee | currency:'':''}} Kč</span>
+            <span  class="bold black">{{ 
+                numberWithSpaces(infoAboutUserFromAPI.fixedFee)
+                }} Kč</span>
         </div>
         </div>
        
@@ -155,10 +166,14 @@
         
         <h3>Stav žádosti</h3>
         <hr>
-        <div class="personalInformation">
+        <div *ngIf="infoAboutUserFromAPI.created" class="personalInformation">
             <div class="item flex">
                 <span >DATUM PODÁNÍ ŽÁDOSTI</span>
-                <span class="bold black">{{infoAboutUserFromAPI.created | date:'shortDate'}}</span>
+                <span class="bold black">
+                    {{infoAboutUserFromAPI.created | date:"shortDate"}}
+                    
+                
+                </span>
             </div>
             <div class="item flex">
                 <span >STAV</span>

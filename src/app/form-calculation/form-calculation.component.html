@@ -94,28 +94,33 @@
     </div> -->
 
  
+      <!-- {{p.total | number:'':'fr-FR'}} -->
 
     <div class="formDisplay" *ngIf="btnActive">
       <h2>Naše výhodná půjčka na vás čeká!</h2>
       <p>
-        Výše úvěru: <span class="bold"> {{ amountInput | currency:'':'' }} Kč </span>
+        Výše úvěru: <span class="bold"> {{ numberWithSpaces(amountInput) }} Kč </span>
       </p>
       <p>
         Doba splácení:
         <span class="bold"> {{ numOfMOnthsInput }} měsíců </span>
       </p>
       <hr />
-      <p>
+      <p *ngIf="this.requestCalc.monthlyPayment">
         Měsíční splátka:
-        <span class="bold"> {{ this.requestCalc.monthlyPayment | currency:'':'' }} Kč </span>
+        <span class="bold"> {{ numberWithSpaces(this.requestCalc.monthlyPayment) }} Kč </span>
       </p>
-      <p>Celková částka: {{ this.requestCalc.overallAmount | currency:'':'' }} Kč</p>
-      <p>Roční úroková sazba: {{ this.requestCalc.yearlyInterest | number:'.1' }} %</p>
-      <p>RPSN: {{ this.requestCalc.RPSN | number:'.1'}} %</p>
+      <p>Celková částka: {{  numberWithSpaces(this.requestCalc.overallAmount) }} Kč</p>
+      <p>Roční úroková sazba: {{ this.requestCalc.yearlyInterest | number:'' }} %</p>
+      <p>RPSN: {{ this.requestCalc.RPSN | number:''}} %</p>
+
+
       <p>
         {{
           this.requestCalc.fixedFee
-            ? "Fixní poplatek: " + this.requestCalc.fixedFee + " Kč"
+            ? "Fixní poplatek: " + 
+            numberWithSpaces(this.requestCalc.fixedFee)
+             + " Kč"
             : "Bez fixního poplatku!"
         }}
       </p>

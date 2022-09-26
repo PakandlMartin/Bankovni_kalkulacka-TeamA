@@ -89,6 +89,10 @@ console.log(this.userInfoService.infoAboutUser)
     this.httpRequestsService.postInfoAboutUser(this.client).subscribe(responseData => {
       console.log(responseData.body)
       this.userInfoService.infoAboutUser = responseData.body
+
+      localStorage.setItem("userInfo",JSON.stringify(responseData.body))
+
+      localStorage.setItem("userInfoCalculation",JSON.stringify(this.httpRequestsService.calculationInfo))
     })
 
     this.router.navigate(['form-details'], {relativeTo: this.route});

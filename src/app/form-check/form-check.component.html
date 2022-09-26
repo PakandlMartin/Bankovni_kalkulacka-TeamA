@@ -19,7 +19,8 @@
         <div class="personalInformation">
         <div class="item flex">
             <span >VÝŠE ÚVĚRU</span>
-            <span class="bold black">{{ infoAboutUserFromAPI.amount | currency:'':'' }} Kč</span>
+            <span class="bold black">{{
+                numberWithSpaces(infoAboutUserFromAPI.amount)}} Kč</span>
         </div>
         <div class="item flex">
             <span >DOBA SPLÁCENÍ</span>

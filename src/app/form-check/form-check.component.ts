@@ -27,9 +27,9 @@ this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserFromLocal
 console.log(JSON.parse(this.infoAboutUserFromLocaleStorage).id)
   }
   
-  clickFun() {
-    console.log(this.httpRequestsService.infoAboutUser)
-    console.log(this.infoAboutUserFromAPI) 
+
+  numberWithSpaces(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
 }
