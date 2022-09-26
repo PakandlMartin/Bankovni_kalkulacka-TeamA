@@ -11,14 +11,20 @@ import { UserInfoService } from '../user-info.service';
 export class FormCheckComponent implements OnInit, DoCheck {
 
   infoAboutUserFromAPI = null;
+  infoAboutUserFromLocaleStorage = localStorage.getItem("userInfo")
+  
 
   constructor(private httpRequestsService: HttpRequestsService) { }
 
   ngOnInit(): void {
+this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserFromLocaleStorage).id)
   }
   
   ngDoCheck(): void {
-    this.infoAboutUserFromAPI = {...this.httpRequestsService.infoAboutUser}
+   
+      this.infoAboutUserFromAPI = {...this.httpRequestsService.infoAboutUser};
+
+console.log(JSON.parse(this.infoAboutUserFromLocaleStorage).id)
   }
   
   clickFun() {

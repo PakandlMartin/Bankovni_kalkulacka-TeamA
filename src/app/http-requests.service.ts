@@ -29,7 +29,7 @@ export class HttpRequestsService {
 
   error = new Subject;
   calculationInfo: object = {};
-  infoAboutUser: object = {
+  infoAboutUser = {
     applicantType: undefined,
     name: undefined,
     surname: undefined,
@@ -86,7 +86,7 @@ return this.http.post<any>(
 getInfoAboutUser(id: string) {
   this.http.get<any>('http://localhost:8000/request/' + id).subscribe(responseData =>{
     this.infoAboutUser = responseData
-    console.log(this.infoAboutUser)
+    localStorage.setItem("userInfo", JSON.stringify(responseData))
   }, error => {
     this.error.next(error.message);
   })

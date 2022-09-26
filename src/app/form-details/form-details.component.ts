@@ -25,12 +25,13 @@ export class FormDetailsComponent implements OnInit, DoCheck {
   ngOnInit(): void {
   }
 
+
+  
+
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
       ...this.userInfoService.infoAboutUser, 
       ...this.httpRequestsService.calculationInfo};
-
-      console.log(this.infoAboutUserFromAPI)
   }
 
 }
