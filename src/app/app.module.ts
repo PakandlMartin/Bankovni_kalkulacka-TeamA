@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'calculator', component: FormCalculationComponent },
   { path: 'form', component: FormContactComponent },
   { path: 'form/form-details', component: FormDetailsComponent },
-  
+  { path: 'form/form-details/:id', component: FormDetailsComponent },
   { path: 'client', component: FormContactComponent},
   { path: 'login', component: AuthComponent },
   { path: 'employee', component: AuthEmployeeComponent },

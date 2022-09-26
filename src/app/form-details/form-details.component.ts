@@ -1,6 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 import { UserInfoService } from '../user-info.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-details',
@@ -15,9 +16,10 @@ export class FormDetailsComponent implements OnInit, DoCheck {
 
   infoAboutUserAPILocaleStorage = localStorage.getItem("userInfo")
 
-  constructor(private userInfoService: UserInfoService, private httpRequestsService: HttpRequestsService) { }
+  constructor(private userInfoService: UserInfoService, private httpRequestsService: HttpRequestsService, private route: ActivatedRoute, private router: Router) { }
 
   infoAboutUserFromAPI = null;
+  idParam;
 
   displayClick() {
     console.log(this.userInfoService.infoAboutUser.name)
@@ -30,13 +32,27 @@ export class FormDetailsComponent implements OnInit, DoCheck {
 
   
   ngOnInit(): void {
-    this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserAPILocaleStorage).id)
+
+console.log( this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserAPILocaleStorage).id))
+    this.httpRequestsService.getInfoAboutUser(JSON.parse(this.infoAboutUserAPILocaleStorage).id);
+
+  //   this.router.navigate(['form-details/' + 88
+  // ], {relativeTo: this.route});
+
+
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   +params.get('2525')
+    // })
   }
   
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
       ...JSON.parse(this.infoAboutUserAPILocaleStorage), 
       ...JSON.parse(this.infoCalculateFromLocaleStorage)};
+
+      this.idParam = this.infoAboutUserFromAPI.id
   }
+
+
 
 }
