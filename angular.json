@@ -4,9 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "projekt-kalkulacka": {
-      "i18n" : {
-        "sourceLocale": "cs-CZ"
-      },
       "projectType": "application",
       "schematics": {},
       "root": "",
