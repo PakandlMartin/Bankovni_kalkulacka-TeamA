@@ -24,11 +24,7 @@ clientExist: boolean = true;
   }
 
   onSubmit(form: NgForm) {
-    // this.client.token = this.signUpForm.value.token;
     this.httpRequestsService.getInfoAboutUserFromApi(this.token);
-    // this.clientExist = false;
-    console.log(this.token);
-
     this.router.navigate(['form-check/' + this.token], {relativeTo: this.route});
   }
 
