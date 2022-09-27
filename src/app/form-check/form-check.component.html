@@ -1,9 +1,8 @@
 <div class="container">
   <div *ngIf="infoAboutUserFromAPI">
-    <!-- {{infoAboutUserFromAPI.name}} -->
+
   </div>
 
-  <!-- *ngIf="infoAboutUserFromAPI.name === '' || null || undefined" -->
   <div *ngIf="false">
     <h1>
       Špatně zadané údaje. Vraťte se prosím na formulář a opravte neplatné
@@ -33,26 +32,7 @@
         >{{ infoAboutUserFromAPI.numOfMonths }} měsíců</span
       >
     </div>
-    <!-- <div class="item flex">
-            <span >MĚSÍČNÍ SPLÁTKA</span>
-            <span  class="bold black">{{infoAboutUserFromAPI.monthlyPayment | currency:'':'' }} Kč </span>
-        </div> -->
-    <!-- <div class="item flex">
-            <span >CELKOVÁ ČÁSTKA</span>
-            <span  class="bold black">{{infoAboutUserFromAPI.overallAmount | currency:'':''}} Kč</span>
-        </div> -->
-    <!-- <div class="item flex">
-            <span >ROČNÍ ÚROKOVÁ SAZBA</span>
-            <span class="bold black">{{ infoAboutUserFromAPI.yearlyInterest | number:'.1' }} %</span>
-        </div> -->
-    <!-- <div class="item flex">
-            <span >RPSN</span>
-            <span class="bold black">{{ this.infoAboutUserFromAPI.RPSN | number:'.1'}} %</span>
-        </div> -->
-    <!-- <div *ngIf="infoAboutUserFromAPI.fixedFee" class="item flex">
-            <span >FIXNÍ POPLATEK</span>
-            <span  class="bold black">{{ infoAboutUserFromAPI.fixedFee | currency:'':''}} Kč</span>
-        </div> -->
+    
   </div>
 
   <h3>Osobní údaje</h3>
