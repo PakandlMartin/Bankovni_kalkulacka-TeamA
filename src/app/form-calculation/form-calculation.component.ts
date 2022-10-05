@@ -10,9 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./form-calculation.component.css'],
 })
 export class FormCalculationComponent implements DoCheck {
-  amountInput;
+  amountInput: number = 500000;
+  
 
-  numOfMOnthsInput: number;
+  numOfMOnthsInput: number = 30;
   btnActive: boolean = false;
   calculationInputs = {
     amount: 0,
@@ -28,7 +29,7 @@ export class FormCalculationComponent implements DoCheck {
   };
 
   requestCalc: any;
-  amountOfMoney: any = 6000;
+  amountOfMoney: any;
   numOfMonthsNg: any;
 
   constructor(
@@ -94,8 +95,8 @@ export class FormCalculationComponent implements DoCheck {
     }
   }
 
-  numberWithSpaces(number) {
-    return number
+  numberWithSpaces(numberInput: number) {
+    return numberInput
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       .toString();

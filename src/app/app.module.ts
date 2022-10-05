@@ -9,7 +9,6 @@ import { FormDetailsComponent } from './form-details/form-details.component';
 import { FormContactComponent } from './form-contact/form-contact.component';
 import { FormCalculationComponent } from './form-calculation/form-calculation.component';
 import { HttpRequestsService } from './http-requests.service';
-import {DetailsComponent} from "./details/details.component";
 import {RouterModule, Routes} from "@angular/router";
 
  import { AuthComponent } from './auth/auth.component';
@@ -43,12 +42,10 @@ const appRoutes: Routes = [
     FormDetailsComponent,
     FormContactComponent,
     FormCalculationComponent,
-    DetailsComponent,
     FormContactComponent,
     AuthComponent,
     AuthEmployeeComponent,
     EmployeeComponent,
-    DetailsComponent,
     EmployeeDetailComponent,
     FormCheckComponent
   ],

@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import { HttpRequestsService } from '../http-requests.service';
+import {HttpRequestsService } from '../http-requests.service';
 import {ActivatedRoute, Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-auth',
@@ -27,9 +28,5 @@ clientExist: boolean = true;
     this.httpRequestsService.getInfoAboutUserFromApi(this.token);
     this.router.navigate(['form-check/' + this.token], {relativeTo: this.route});
   }
-
 }
 
-
-// this.router.navigate(['form-details/' + responseData.body.id
-//     ], {relativeTo: this.route});
