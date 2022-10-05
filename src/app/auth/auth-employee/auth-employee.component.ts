@@ -32,8 +32,6 @@ export class AuthEmployeeComponent implements OnInit {
     this.authService.login(this.employee.login, this.employee.password).subscribe(resData => {
       localStorage.setItem('employeeData', JSON.stringify(resData));
       this.router.navigate(['detail'], {relativeTo: this.route});
-
-
     })
   };
 

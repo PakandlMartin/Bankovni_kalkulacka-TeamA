@@ -15,7 +15,7 @@
             max="1200000"
             name="amount"
             step="1000"
-            (change)="changeOfAmount($event)"
+            (input)="changeOfAmount($event)"
             [(ngModel)]="amountOfMoney"
           />
           <span>Kč</span>
@@ -33,7 +33,7 @@
           value="50000"
           step="5000"
           [(ngModel)]="amountOfMoney"
-          (change)="changeAmountRange($event)"
+          (input)="changeAmountRange($event)"
         />
       </div>
       <div class="flexBetween">
@@ -54,7 +54,7 @@
             placeholder="Zadejte dobu"
             min="6"
             max="60"
-            (change)="changeOfNumOfMonths($event)"
+            (input)="changeOfNumOfMonths($event)"
             name="numOfMonths"
             [(ngModel)]="numOfMonthsNg"
           />
@@ -62,7 +62,7 @@
         </span>
       </div>
 
-      <div class="flex rangeInputSecond">
+      <div class="flex rangeInput">
         <input
           #numOfMonthsRange
           type="range"
@@ -72,7 +72,7 @@
           max="60"
           value="12"
           step="2"
-          (change)="changeOfNumOfMonthsRange($event)"
+          (input)="changeOfNumOfMonthsRange($event)"
           [(ngModel)]="numOfMonthsNg"
         />
       </div>
@@ -81,12 +81,6 @@
         <span>60</span>
       </div>
     </div>
-
-    <!-- <div class="flex" *ngIf="!calculationInputs.amount || !calculationInputs.numOfMonths">
-     
-    </div> -->
-
-    <!-- {{p.total | number:'':'fr-FR'}} -->
 
     <div class="formDisplay" *ngIf="btnActive">
       <h2>Naše výhodná půjčka na vás čeká!</h2>

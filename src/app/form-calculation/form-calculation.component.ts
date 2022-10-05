@@ -28,7 +28,7 @@ export class FormCalculationComponent implements DoCheck {
   };
 
   requestCalc: any;
-  amountOfMoney: any;
+  amountOfMoney: any = 6000;
   numOfMonthsNg: any;
 
   constructor(
@@ -42,7 +42,6 @@ export class FormCalculationComponent implements DoCheck {
 
   ngDoCheck() {
     this.requestCalc = this.httpRequestsService.calculationInfo;
-
     this.amountOfMoney = this.amountInput;
     this.numOfMonthsNg = this.numOfMOnthsInput;
   }
