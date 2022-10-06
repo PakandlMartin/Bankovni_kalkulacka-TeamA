@@ -107,15 +107,13 @@ option {
 .phoneDiv > input {
   min-width: 120px;
   max-width: 170px;
-  border-left: none;
   border-radius: 2px 2px 0 0;
 }
 
 .phoneDiv > span {
-  border-left: solid #cccccc 1px;
-  border-top: solid #cccccc 1px;
-  border-bottom: solid #cccccc 1px;
-  padding: 13px 7px 12px 0px;
+  display: inline-block;
+  min-height: 50px;
+  padding-right: 5px
 }
 
 button {

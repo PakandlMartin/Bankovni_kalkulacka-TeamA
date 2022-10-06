@@ -238,6 +238,7 @@
             <label for="phone">Telefon</label><br />
             <span>+420 </span>
             <input
+            (input)="displayF()"
               type="text"
               id="phone"
               ngModel
@@ -246,6 +247,7 @@
               maxlength="12"
               minlength="9"
               required
+              pattern="^[0-9]*$"
             />
             <div>
               <p

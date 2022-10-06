@@ -78,14 +78,14 @@ export class FormContactComponent implements DoCheck, OnInit {
   signValuesFromInputs() {
     this.client.applicantType = this.signUpForm.value.applicantType;
     this.client.name = this.signUpForm.value.name.trim();
-    this.client.companyName = this.signUpForm.value.companyName.trim();
+    this.client.companyName = this.signUpForm.value.companyName;
     this.client.surname = this.signUpForm.value.surname.trim();
     this.client.birthNum = this.signUpForm.value.birthNum.trim();
     this.client.nationality = this.signUpForm.value.nationality.trim();
     this.client.email = this.signUpForm.value.email.trim();
     this.client.phone = this.signUpForm.value.phone.trim();
-    this.client.IC = this.signUpForm.value.IC.trim();
-    this.client.position = this.signUpForm.value.position.trim();
+    this.client.IC = this.signUpForm.value.IC;
+    this.client.position = this.signUpForm.value.position;
     this.client.address.street = this.signUpForm.value.street.trim();
     this.client.address.descNumber = Number(this.signUpForm.value.descNumber);
     this.client.address.indicativeNumber = Number(
@@ -117,7 +117,3 @@ export class FormContactComponent implements DoCheck, OnInit {
   }
 }
 
-
-// console.log(this.signUpForm.form.controls?.['name'].errors?.['pattern']);
-
-  // this.signUpForm.value.name.errors?.['pattern']
