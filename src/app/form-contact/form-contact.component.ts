@@ -2,7 +2,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 import { UserInfoService } from '../user-info.service';
 import { ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,8 +15,6 @@ export class FormContactComponent implements DoCheck, OnInit {
     this.client.amount = this.userInfoService.calculationInformation.amount;
     this.client.numOfMonths =
       this.userInfoService.calculationInformation.numOfMonths;
-
-
   }
 
   constructor(
@@ -28,30 +26,37 @@ export class FormContactComponent implements DoCheck, OnInit {
 
   ngOnInit(): void {}
 
-  idCreated = false;
-  selectedType = 'INDIVIDUAL';
-
   @ViewChild('f') signUpForm: NgForm;
 
+  idCreated = false;
+  selectedType = 'INDIVIDUAL';
+  example = "nothing"
+
+
+exampleFunction() {
+  return "example"
+}
+
+
   client = {
-    applicantType: undefined,
-    name: undefined,
-    surname: undefined,
-    birthNum: undefined,
-    nationality: undefined,
-    email: undefined,
-    phone: undefined,
-    IC: undefined,
-    position: undefined,
-    companyName: undefined,
-    amount: undefined,
-    numOfMonths: undefined,
+    applicantType: '',
+    name: '',
+    surname: '',
+    birthNum: '',
+    nationality: '',
+    email: '',
+    phone: '',
+    IC: '',
+    position: '',
+    companyName: '',
+    amount: 0,
+    numOfMonths: 0,
     address: {
-      street: undefined,
-      descNumber: undefined,
-      indicativeNumber: undefined,
-      city: undefined,
-      postalCode: undefined,
+      street: '',
+      descNumber: 0,
+      indicativeNumber: 0,
+      city: '',
+      postalCode: 0,
     },
   };
 
@@ -77,16 +82,27 @@ export class FormContactComponent implements DoCheck, OnInit {
 
   onSubmit() {
     this.signValuesFromInputs();
-    this.httpRequestsService
-      .postInfoAboutUser(this.client)
-      .subscribe((responseData) => {
-        this.userInfoService.infoAboutUser = responseData.body;
 
-        localStorage.setItem('userInfo', JSON.stringify(responseData.body));
+    if (this.signUpForm.valid) {
+      this.httpRequestsService
+        .postInfoAboutUser(this.client)
+        .subscribe((responseData) => {
+          this.userInfoService.infoAboutUser = responseData.body;
+          localStorage.setItem('userInfo', JSON.stringify(responseData.body));
 
-        this.router.navigate(['form-details/' + responseData.body.id], {
-          relativeTo: this.route,
+          this.router.navigate(['form-details/' + responseData.body.id], {
+            relativeTo: this.route,
+          });
         });
-      });
+    }
+  }
+
+  displayF() {
+    console.log(this.signUpForm.form.controls?.['name'].errors);
   }
 }
+
+
+// console.log(this.signUpForm.form.controls?.['name'].errors?.['pattern']);
+
+  // this.signUpForm.value.name.errors?.['pattern']

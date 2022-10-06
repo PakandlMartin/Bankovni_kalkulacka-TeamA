@@ -20,7 +20,5 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
-  title = 'projekt-kalkulacka';
-
   ngOnInit() {}
 }

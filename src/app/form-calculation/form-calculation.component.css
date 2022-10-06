@@ -3,7 +3,7 @@
   color: #00843d;
   max-width: 80%;
   max-width: 900px;
-  margin: 40px auto;
+  margin: 30px auto;
   border-radius: 3px;
   border: rgba(255, 255, 255, 0.783) solid 2px;
   box-shadow: rgba(116, 116, 116, 0.548) 0px 7px 29px 0px;
@@ -14,6 +14,7 @@
   padding-top: 0px;
   padding-bottom: 15px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .boxDiv {
@@ -23,6 +24,10 @@
 margin: 0 40px;
 border-radius: 5px;
 box-shadow: rgba(100, 100, 111, 0.351) 0px 7px 29px 0px;
+}
+
+.boxDiv:first-of-type {
+margin-bottom: 25px;
 }
 
 .flexBetween {
@@ -57,7 +62,7 @@ box-shadow: rgba(100, 100, 111, 0.351) 0px 7px 29px 0px;
   outline: none;
   border-radius: 2px;
   margin-right: 5px;
-  background-color: shite;
+  background-color: white;
 }
 
 span {
@@ -71,14 +76,14 @@ span {
 
 button {
   font-size: 1.4rem;
-  padding: 0.5rem 2rem;
+  padding: 0.8rem 2rem;
   text-align: center;
   display: block;
   color: white;
-  background-color:#00843d;
+  background-color:#00843ed3;
   margin-bottom: 20px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 35px auto;
   border: none;
 }
@@ -93,18 +98,20 @@ button:disabled {
 }
 
 .hover:hover {
-  box-shadow: 0 0 6px rgb(255, 255, 255);
+  box-shadow: 0px 0px 6px #00843ed3;
+  color: white;
 }
+
 
 .formDisplay {
   max-width: 600px;
   font-size: 1.2rem;
-  color: #00843d;
-  background-color: rgb(255, 255, 255);
+  color: #ffffff;
+  background-color:#57b583;
   margin: 50px auto 20px auto;
-  padding: 15px;
-  border-radius: 3px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow:#0000008d 3px 3px 15px 3px;
 }
 
 .formDisplay > h2 {

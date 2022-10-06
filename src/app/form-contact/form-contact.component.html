@@ -1,5 +1,4 @@
-<!-- <p>form-contact works!</p>
-<button (click) = "onClick()">Click me!!</button> -->
+
 <h2>Úvěr sjednává</h2>
 
 <div class="container">
@@ -33,6 +32,7 @@
               minlength="8"
               maxlength="8"
               #IC="ngModel"
+
               required
             />
             <div *ngIf="!IC.valid && IC.touched">
@@ -62,6 +62,7 @@
           <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
             <label for="name">Jméno</label><br />
             <input
+            (input) = "displayF()"
               type="text"
               id="name"
               ngModel
@@ -71,9 +72,16 @@
               minlength="3"
               pattern="[A-Za-z]{1,32}"
             />
-            <div *ngIf="!name.valid && name.touched">
-              <p class="warning">Alespoň 3 znaky</p>
+            <div >
+              <p *ngIf="(name.touched && name.errors?.['minlength']) || f.submitted" class="warning">Alespoň 3 znaky</p>
+              <p *ngIf="name.touched && name.errors?.['pattern']" class="warning">Jméno neodpovídá</p>
+              <p> {{ exampleFunction() }} </p>
             </div>
+
+            <div >
+            </div>
+
+
           </div>
 
           <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
@@ -423,8 +431,11 @@
           </div>
         </div>
 
-        <button type="submit" class="" [disabled]="!f.valid">ODESLAT</button>
+        <button type="submit" class="" >ODESLAT</button>
       </div>
     </div>
   </form>
 </div>
+
+
+<!-- [disabled]="!f.valid" -->
