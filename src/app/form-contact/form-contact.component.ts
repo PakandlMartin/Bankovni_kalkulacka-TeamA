@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-form-contact',
   templateUrl: './form-contact.component.html',
@@ -33,8 +34,22 @@ export class FormContactComponent implements DoCheck, OnInit {
   example = "nothing"
 
 
-exampleFunction() {
-  return "example"
+
+  getValidation(errorsForm: any) {
+
+  if (errorsForm.errors['minlength']) {
+    return `Alespoň ${
+      errorsForm.errors?.['minlength'].requiredLength} 
+      ${errorsForm.errors?.['minlength'].requiredLength <= 4 ? 'znaky' : 'znaků'} `
+  } else if (errorsForm.errors['pattern'] || errorsForm.errors['email'])  {
+    return 'Neodpovídající formát'
+  } else if (errorsForm.errors['required']) {
+    return 'Pole je povinné'
+  } else if (!errorsForm.value.trim().length) {
+    return 'Pole je povinné'
+  } else {
+    return ''
+  }
 }
 
 
@@ -62,21 +77,21 @@ exampleFunction() {
 
   signValuesFromInputs() {
     this.client.applicantType = this.signUpForm.value.applicantType;
-    this.client.name = this.signUpForm.value.name;
-    this.client.companyName = this.signUpForm.value.companyName;
-    this.client.surname = this.signUpForm.value.surname;
-    this.client.birthNum = this.signUpForm.value.birthNum;
-    this.client.nationality = this.signUpForm.value.nationality;
-    this.client.email = this.signUpForm.value.email;
-    this.client.phone = this.signUpForm.value.phone;
-    this.client.IC = this.signUpForm.value.IC;
-    this.client.position = this.signUpForm.value.position;
-    this.client.address.street = this.signUpForm.value.street;
+    this.client.name = this.signUpForm.value.name.trim();
+    this.client.companyName = this.signUpForm.value.companyName.trim();
+    this.client.surname = this.signUpForm.value.surname.trim();
+    this.client.birthNum = this.signUpForm.value.birthNum.trim();
+    this.client.nationality = this.signUpForm.value.nationality.trim();
+    this.client.email = this.signUpForm.value.email.trim();
+    this.client.phone = this.signUpForm.value.phone.trim();
+    this.client.IC = this.signUpForm.value.IC.trim();
+    this.client.position = this.signUpForm.value.position.trim();
+    this.client.address.street = this.signUpForm.value.street.trim();
     this.client.address.descNumber = Number(this.signUpForm.value.descNumber);
     this.client.address.indicativeNumber = Number(
       this.signUpForm.value.indicativeNumber
     );
-    this.client.address.city = this.signUpForm.value.city;
+    this.client.address.city = this.signUpForm.value.city.trim();
     this.client.address.postalCode = Number(this.signUpForm.value.postalCode);
   }
 
@@ -98,7 +113,7 @@ exampleFunction() {
   }
 
   displayF() {
-    console.log(this.signUpForm.form.controls?.['name'].errors);
+    console.log(this.signUpForm.form.controls?.['name']);
   }
 }
 
