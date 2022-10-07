@@ -10,11 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   @ViewChild('authForm') signUpForm: NgForm;
-  client = {
-    token: '',
-  };
 
+// ID client
   token: string;
+
+  // variable for display error message in template
   errorMessage = ''
 
   constructor(
@@ -25,19 +25,24 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // event handler - submit button
   onSubmit(form: NgForm) {
+    // send ID of user to API 
     this.httpRequestsService
       .getInfoAboutUserFromApi(this.token)
+      // get data from API
       .subscribe((responseData) => {
-        if (responseData.status === 200) {
+        // store data from API about user to localStorage
           localStorage.setItem(
             'userInfoAPI',
             JSON.stringify(responseData.body)
           );
+          // navigate user to form with his ID
            this.router.navigate(['form-check/' + this.token], {relativeTo: this.route});
-        }
+       // if ID is not in database
       } , (error) => {
          console.error(error);
+         // display error message in template
          this.errorMessage = 'Bohužel nebylo možné nalézt žádost pod tímto ID'
         });
   }

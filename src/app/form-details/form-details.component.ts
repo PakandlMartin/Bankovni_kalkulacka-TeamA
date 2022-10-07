@@ -24,12 +24,13 @@ export class FormDetailsComponent implements OnInit, DoCheck {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
 
-  // 
+  // send request to API with user ID, get respond with information about him and store them to local storage
   ngOnInit(): void {
     this.httpRequestsService.getInfoAboutUser(
       JSON.parse(this.infoAboutUserAPILocaleStorage).id
     );
   }
+  // Store data from localStorage to object - use them in template
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
       ...JSON.parse(this.infoCalculateFromLocaleStorage),
