@@ -120,6 +120,7 @@
           <div *ngIf="selectedType === 'INDIVIDUAL'">
             <label for="birthNum">Rodné číslo</label><br />
             <input
+            (input)="displayF()"
               type="text"
               id="birthNum"
               ngModel
@@ -128,6 +129,7 @@
               minlength="10"
               maxlength="11"
               required
+              appIdValidator
             />
             <div>
               <p

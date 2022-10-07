@@ -47,7 +47,10 @@ export class FormContactComponent implements DoCheck, OnInit {
     return 'Pole je povinné'
   } else if (!errorsForm.value.trim().length) {
     return 'Pole je povinné'
-  } else {
+  } else if (errorsForm.errors['idNotValid']) {
+    return 'Neplatné rodné číslo'
+  } 
+  else {
     return ''
   }
 }
@@ -113,7 +116,7 @@ export class FormContactComponent implements DoCheck, OnInit {
   }
 
   displayF() {
-    console.log(this.signUpForm.form.controls?.['name']);
+    console.log(this.signUpForm.form.controls?.['birthNum']);
   }
 }
 

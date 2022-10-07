@@ -16,7 +16,6 @@ h2 {
 .container {
   color: #666666;
   font-size: 15px;
-
 }
 
 .form-person {
@@ -44,7 +43,9 @@ h2 {
   background-color: #f2dede;
   border-color: #eed3d7;
   padding-left: 8px;
+  padding-right: 8px;
   border-radius: 3px;
+  max-width: fit-content;
 }
 
 option {
@@ -112,7 +113,6 @@ option {
 
 .phoneDiv > span {
   display: inline-block;
-  min-height: 50px;
   padding-right: 5px
 }
 
@@ -168,8 +168,7 @@ button:disabled {
   margin-bottom: 15px;
 }
 
-/* min-width: 150px;
-min-height: 30px; */
+
 
 .smallHeader {
   font-size: 1rem;
@@ -198,3 +197,71 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+/* .form-person {
+  background-color: white;
+  margin: 0px auto 50px auto;
+  padding: 20px 20px 20px 20px;
+  min-width: 500px;
+  max-width: 700px;
+  box-shadow: rgba(116, 116, 116, 0.548) 0px 7px 29px 0px;
+  border-radius: 5px;
+} */
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+.form-person {
+  min-width: 300px;
+  max-width: 500px;
+  padding: 5px 0;
+  margin: 0 auto;
+}
+
+
+  input {
+    display: block;
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .flex {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .inputSmaller input {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .flex-small {
+display: block;
+  }
+
+  .phoneDiv > span {
+    display: none;
+  }
+
+  .phoneDiv > input {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+
+}
+
+/* .phoneDiv > input {
+  min-width: 120px;
+  max-width: 170px;
+  border-radius: 2px 2px 0 0;
+}
+
+.phoneDiv > span {
+  display: inline-block;
+  padding-right: 5px
+} */

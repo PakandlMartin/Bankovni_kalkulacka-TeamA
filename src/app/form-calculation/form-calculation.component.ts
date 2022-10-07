@@ -11,13 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormCalculationComponent implements DoCheck {
   amountInput: number = 500000;
-  
-
-  numOfMOnthsInput: number = 30;
+  numOfMOnthsInput: number = 50;
   btnActive: boolean = false;
   calculationInputs = {
-    amount: 0,
-    numOfMonths: 0,
+    amount: this.amountInput,
+    numOfMonths: this.numOfMOnthsInput,
   };
 
   calculationOutput = {
@@ -39,7 +37,8 @@ export class FormCalculationComponent implements DoCheck {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   ngDoCheck() {
     this.requestCalc = this.httpRequestsService.calculationInfo;
@@ -85,6 +84,7 @@ export class FormCalculationComponent implements DoCheck {
     this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
     this.httpRequestsService.postCalculationInfo(this.calculationInputs);
+    console.log(this.amountInput)
   }
 
   changeBtnActive() {

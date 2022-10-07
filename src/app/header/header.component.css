@@ -40,3 +40,14 @@ nav {
   border-bottom: #00843d solid 3px;
   color: #00843d;
 }
+
+@media only screen and (max-width: 700px) {
+  .flex {
+    display: block;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+}

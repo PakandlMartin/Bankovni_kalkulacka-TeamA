@@ -17,6 +17,7 @@ import {EmployeeComponent} from "./employee/employee.component";
 import {EmployeeDetailComponent} from "./employee/employee-detail/employee-detail.component";
 import { FormCheckComponent } from './form-check/form-check.component';
 import { WhitespaceValidatorDirective } from './whitespace-validator.directive';
+import { IdValidatorDirective } from './id-validator.directive';
 
 const appRoutes: Routes = [
   { path: '', component: FormCalculationComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     EmployeeComponent,
     EmployeeDetailComponent,
     FormCheckComponent,
-    WhitespaceValidatorDirective
+    WhitespaceValidatorDirective,
+    IdValidatorDirective
   ],
   imports: [
     FormsModule,

@@ -98,7 +98,7 @@
           {{ numberWithSpaces(this.requestCalc.monthlyPayment) }} Kč
         </span>
       </p>
-      <p>
+      <p *ngIf="this.requestCalc.overallAmount">
         Celková částka:
         {{ numberWithSpaces(this.requestCalc.overallAmount) }} Kč
       </p>
