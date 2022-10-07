@@ -92,23 +92,24 @@
         <span class="bold"> {{ numOfMOnthsInput }} měsíců </span>
       </p>
       <hr />
-      <p *ngIf="this.requestCalc.monthlyPayment">
+      <p *ngIf="this.requestCalc">
         Měsíční splátka:
         <span class="bold">
           {{ numberWithSpaces(this.requestCalc.monthlyPayment) }} Kč
         </span>
       </p>
-      <p *ngIf="this.requestCalc.overallAmount">
+      <p *ngIf="this.requestCalc">
         Celková částka:
         {{ numberWithSpaces(this.requestCalc.overallAmount) }} Kč
       </p>
-      <p>
+
+      <p *ngIf="this.requestCalc">
         Roční úroková sazba:
         {{ this.requestCalc.yearlyInterest | number: "" }} %
       </p>
-      <p>RPSN: {{ this.requestCalc.RPSN | number: "" }} %</p>
+      <p *ngIf="this.requestCalc">RPSN: {{ this.requestCalc.RPSN | number: "" }} %</p>
 
-      <p>
+      <p *ngIf="this.requestCalc">
         {{
           this.requestCalc.fixedFee
             ? "Fixní poplatek: " +

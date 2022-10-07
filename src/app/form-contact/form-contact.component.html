@@ -70,7 +70,6 @@
           <div *ngIf="selectedType === 'INDIVIDUAL' || selectedType === 'OSVC'">
             <label for="name">Jméno</label><br />
             <input
-              (input)="displayF()"
               value="jala"
               type="text"
               id="name"
@@ -121,7 +120,6 @@
           <div *ngIf="selectedType === 'INDIVIDUAL'">
             <label for="birthNum">Rodné číslo</label><br />
             <input
-            (input)="displayF()"
               type="text"
               id="birthNum"
               ngModel
@@ -217,7 +215,6 @@
           <div *ngIf="selectedType === 'OSVC' || selectedType === 'INDIVIDUAL'">
             <label for="email">Email</label><br />
             <input
-              (input)="displayF()"
               type="email"
               id="email"
               ngModel
@@ -242,7 +239,6 @@
             <label for="phone">Telefon</label><br />
             <span>+420 </span>
             <input
-            (input)="displayF()"
               type="tel"
               id="phone"
               ngModel

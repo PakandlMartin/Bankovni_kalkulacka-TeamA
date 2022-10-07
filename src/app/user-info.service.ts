@@ -8,7 +8,6 @@ export class UserInfoService {
 
   calculationInformation = JSON.parse(localStorage.getItem('infoFromCalculation'));
 
-
   infoAboutUser = {
     applicantType: '',
     name: '',

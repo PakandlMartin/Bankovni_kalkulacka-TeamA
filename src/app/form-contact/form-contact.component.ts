@@ -5,15 +5,12 @@ import { ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-form-contact',
   templateUrl: './form-contact.component.html',
   styleUrls: ['./form-contact.component.css'],
 })
 export class FormContactComponent implements OnInit {
-
-
   constructor(
     private httpRequestsService: HttpRequestsService,
     private userInfoService: UserInfoService,
@@ -22,41 +19,42 @@ export class FormContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+   // store amount of money from calculation in client object
     this.client.amount = this.userInfoService.calculationInformation.amount;
+    // store num of months from calculation in client object
     this.client.numOfMonths =
     this.userInfoService.calculationInformation.numOfMonths;
   }
-
+// way to get informations about form from template
   @ViewChild('f') signUpForm: NgForm;
-
-  idCreated = false;
+// default selectedType for ngModel
   selectedType = 'INDIVIDUAL';
-  errorMessage:string = ""
-  infoFromCalculationLocalStorage: object = {};
+  // variable for error message from server (this.httpRequestsService.postInfoAboutUser)
+  errorMessage: string = '';
 
-
-
+// function for validation input from template 
   getValidation(errorsForm: any) {
-
-  if (errorsForm.errors['minlength']) {
-    return `Alespoň ${
-      errorsForm.errors?.['minlength'].requiredLength} 
-      ${errorsForm.errors?.['minlength'].requiredLength <= 4 ? 'znaky' : 'znaků'} `
-  } else if (errorsForm.errors['pattern'] || errorsForm.errors['email'])  {
-    return 'Neodpovídající formát'
-  } else if (errorsForm.errors['required']) {
-    return 'Pole je povinné'
-  } else if (!errorsForm.value.trim().length) {
-    return 'Pole je povinné'
-  } else if (errorsForm.errors['idNotValid']) {
-    return 'Neplatné rodné číslo'
-  } 
-  else {
-    return ''
+    // validation for minlength
+    if (errorsForm.errors['minlength']) {
+      return `Alespoň ${errorsForm.errors?.['minlength'].requiredLength} 
+      ${
+        errorsForm.errors?.['minlength'].requiredLength <= 4 ? 'znaky' : 'znaků'
+      } `;
+    // validation for pattern
+    } else if (errorsForm.errors['pattern'] || errorsForm.errors['email']) {
+      return 'Neodpovídající formát';
+    // validation for required
+    } else if (errorsForm.errors['required'] || !errorsForm.value.trim().length ) {
+      return 'Pole je povinné';
+    // validation for valid ID
+    } else if (errorsForm.errors['idNotValid']) {
+      return 'Neplatné rodné číslo';
+    } else {
+      return '';
+    }
   }
-}
 
-
+  // object for all information about client 
   client = {
     applicantType: '',
     name: '',
@@ -79,6 +77,7 @@ export class FormContactComponent implements OnInit {
     },
   };
 
+  // signing info about client from template form to object
   signValuesFromInputs() {
     this.client.applicantType = this.signUpForm.value.applicantType;
     this.client.name = this.signUpForm.value.name.trim();
@@ -99,27 +98,32 @@ export class FormContactComponent implements OnInit {
     this.client.address.postalCode = Number(this.signUpForm.value.postalCode);
   }
 
+  // event handler - for submit button
   onSubmit() {
+     // signing info about client from template form to object
     this.signValuesFromInputs();
-
+// if form is valid
     if (this.signUpForm.valid) {
-      this.httpRequestsService
-        .postInfoAboutUser(this.client)
-        .subscribe((responseData) => {
+      // send data about user to API
+      this.httpRequestsService.postInfoAboutUser(this.client).subscribe(
+        (responseData) => {
+          // store data from API to service
           this.userInfoService.infoAboutUser = responseData.body;
+          // store data from API to localStorage
           localStorage.setItem('userInfo', JSON.stringify(responseData.body));
+          // after click navigate to form-details
           this.router.navigate(['form-details/' + responseData.body.id], {
             relativeTo: this.route,
           });
-        }, error => {
-          this.errorMessage = 'Testovací chyba ze serveru - sudé číslo u čísla popisného'
-          console.error(error)
-        });
+        },
+        (error) => {
+          // if there is a error, display it in template
+          this.errorMessage =
+            'Testovací chyba ze serveru - sudé číslo u čísla popisného';
+          console.error(error);
+        }
+      );
     }
   }
 
-  displayF() {
-    console.log(this.signUpForm.form.controls?.['birthNum']);
-  }
 }
-

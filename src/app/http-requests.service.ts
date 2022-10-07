@@ -110,23 +110,17 @@ export class HttpRequestsService {
       (responseData) => {
         this.infoAboutUser = responseData;
         localStorage.setItem('userInfo', JSON.stringify(responseData));
+        return true
       },
       (error) => {
         this.error.next(error.message);
+        return false
       }
     );
   }
 
-  getInfoAboutUserFromApi(id: string) {
-    this.http.get<any>('http://localhost:8000/request/' + id).subscribe(
-      (responseData) => {
-        this.infoAboutUserFromApi = responseData;
-        localStorage.setItem('userInfoAPI', JSON.stringify(responseData));
-      },
-      (error) => {
-        this.error.next(error.message);
-      }
-    );
+  getInfoAboutUserFromApi(id: string):Observable<any> {
+    return this.http.get<any>('http://localhost:8000/request/' + id, { observe: 'response'})
   }
 
   login(login: string, password: string) {
@@ -191,4 +185,20 @@ export class HttpRequestsService {
 //         this.error.next(error.message);
 //       }
 //     );
+// }
+
+
+
+// getInfoAboutUser(id: string) {
+//   this.http.get<any>('http://localhost:8000/request/' + id).subscribe(
+//     (responseData) => {
+//       this.infoAboutUser = responseData;
+//       localStorage.setItem('userInfo', JSON.stringify(responseData));
+//       return true
+//     },
+//     (error) => {
+//       this.error.next(error.message);
+//       return false
+//     }
+//   );
 // }

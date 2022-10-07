@@ -14,7 +14,7 @@
 <div class="flex">
   <button type="submit" class="btn btn-success">PŘIHLÁSIT SE</button>
 </div>
-<p class="clientExist" *ngIf="!clientExist">
+<p class="clientExist" *ngIf="errorMessage">
   Bohužel se nám vaši žádost nepodařilo dohledat. Zkontrolujte si správnost identifikačního kódu.
 </p>
 </div>

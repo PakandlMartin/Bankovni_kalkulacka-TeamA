@@ -9,20 +9,22 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
   styleUrls: ['./form-details.component.css'],
 })
 export class FormDetailsComponent implements OnInit, DoCheck {
-  requestCalc;
-
-  infoCalculateFromLocaleStorage = localStorage.getItem('userInfoCalculation');
-  infoAboutUserAPILocaleStorage = localStorage.getItem('userInfo');
 
   constructor(private httpRequestsService: HttpRequestsService) {}
 
-  infoAboutUserFromAPI = null;
-  idParam;
+  // variable for information about user - using in template
+  infoAboutUserFromAPI: any = null;
+  // get info about calculation from localStorage
+  infoCalculateFromLocaleStorage = localStorage.getItem('infoFromCalculation');
+  // get info about user form from localStorage
+  infoAboutUserAPILocaleStorage = localStorage.getItem('userInfo');
 
+  // changing format of numbers to more readable one
   numberWithSpaces(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   }
 
+  // 
   ngOnInit(): void {
     this.httpRequestsService.getInfoAboutUser(
       JSON.parse(this.infoAboutUserAPILocaleStorage).id
@@ -30,10 +32,9 @@ export class FormDetailsComponent implements OnInit, DoCheck {
   }
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
-      ...JSON.parse(this.infoAboutUserAPILocaleStorage),
       ...JSON.parse(this.infoCalculateFromLocaleStorage),
+      ...JSON.parse(this.infoAboutUserAPILocaleStorage)
     };
 
-    this.idParam = this.infoAboutUserFromAPI.id;
   }
 }
