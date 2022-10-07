@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserInfoService {
-  calculationInformation = {
-    amount: 0,
-    numOfMonths: 0,
-  };
+
+
+  calculationInformation = JSON.parse(localStorage.getItem('infoFromCalculation'));
+
 
   infoAboutUser = {
     applicantType: '',

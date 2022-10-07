@@ -72,12 +72,12 @@
 
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC'" class="item flex">
             <span >JMÉNO</span>
-            <span class="bold black">{{infoAboutUserFromAPI.name}}</span>
+            <span class="bold black">{{infoAboutUserFromAPI.name | titlecase}}</span>
         </div>
 
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL' || infoAboutUserFromAPI.applicantType === 'OSVC'" class="item flex">
             <span >PŘÍJMENÍ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.surname}}</span>
+            <span class="bold black">{{infoAboutUserFromAPI.surname | titlecase}}</span>
         </div>
 
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'INDIVIDUAL'" class="item flex">
@@ -108,7 +108,7 @@
             <span > NÁZEV FIRMY
                 </span>
             <span class="bold black">
-               {{infoAboutUserFromAPI.companyName}}
+               {{infoAboutUserFromAPI.companyName | titlecase}}
             </span>
         </div>
 
@@ -118,12 +118,12 @@
 
           <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
             <span >JMÉNO</span>
-            <span class="bold black">{{infoAboutUserFromAPI.name}}</span>
+            <span class="bold black">{{infoAboutUserFromAPI.name | titlecase}}</span>
         </div>
 
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY' " class="item flex">
             <span >PŘÍJMENÍ</span>
-            <span class="bold black">{{infoAboutUserFromAPI.surname}}</span>
+            <span class="bold black">{{infoAboutUserFromAPI.surname | titlecase}}</span>
         </div>
 
         <div *ngIf="infoAboutUserFromAPI.applicantType === 'LEGAL_ENTITY'" class="item flex">
@@ -153,7 +153,7 @@
         </div>
         <div class="item flex">
             <span >OBEC</span>
-            <span class="bold black">{{infoAboutUserFromAPI.address.city}}</span>
+            <span class="bold black">{{infoAboutUserFromAPI.address.city | titlecase}}</span>
         </div>
         <div class="item flex">
             <span >PSČ</span>

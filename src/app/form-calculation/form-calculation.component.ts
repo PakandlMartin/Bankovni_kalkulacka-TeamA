@@ -9,21 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './form-calculation.component.html',
   styleUrls: ['./form-calculation.component.css'],
 })
-export class FormCalculationComponent implements DoCheck {
+export class FormCalculationComponent  {
   amountInput: number = 500000;
   numOfMOnthsInput: number = 50;
   btnActive: boolean = false;
   calculationInputs = {
     amount: this.amountInput,
     numOfMonths: this.numOfMOnthsInput,
-  };
-
-  calculationOutput = {
-    monthlyPayment: 0,
-    yearlyInterest: 0,
-    RPSN: 0,
-    overallAmount: 0,
-    fixedFee: 0,
   };
 
   requestCalc: any;
@@ -38,12 +30,17 @@ export class FormCalculationComponent implements DoCheck {
   ) {}
 
   ngOnInit(): void {
-  }
-
-  ngDoCheck() {
-    this.requestCalc = this.httpRequestsService.calculationInfo;
     this.amountOfMoney = this.amountInput;
     this.numOfMonthsNg = this.numOfMOnthsInput;
+    this.refreshCalculationInfoFromAPI()
+  }
+
+  refreshCalculationInfoFromAPI() {
+    this.httpRequestsService.postCalculationInfo(this.calculationInputs)
+    .subscribe(
+      responseData => {
+        this.requestCalc = responseData.body;
+      })
   }
 
   calculate(amountCalculate, numOfMonthsCalculate) {
@@ -54,6 +51,9 @@ export class FormCalculationComponent implements DoCheck {
       Number(amountCalculate);
     this.userInfoService.calculationInformation.numOfMonths =
       Number(numOfMonthsCalculate);
+const calculationToLocalStorage  = {...this.calculationInputs, ...this.requestCalc}
+    localStorage.setItem('infoFromCalculation', JSON.stringify(calculationToLocalStorage))
+
 
     this.router.navigate(['/form'], { relativeTo: this.route });
   }
@@ -62,29 +62,28 @@ export class FormCalculationComponent implements DoCheck {
     this.amountInput = Number(amountChange.target.value);
     this.calculationInputs.amount = Number(this.amountInput);
     this.changeBtnActive();
-    this.httpRequestsService.postCalculationInfo(this.calculationInputs);
+    this.refreshCalculationInfoFromAPI()
   }
 
   changeAmountRange(amountChangeRange) {
     this.amountInput = Number(amountChangeRange.target.value);
     this.calculationInputs.amount = Number(this.amountInput);
     this.changeBtnActive();
-    this.httpRequestsService.postCalculationInfo(this.calculationInputs);
+    this.refreshCalculationInfoFromAPI()
   }
 
   changeOfNumOfMonths(numChange) {
     this.numOfMOnthsInput = Number(numChange.target.value);
     this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
-    this.httpRequestsService.postCalculationInfo(this.calculationInputs);
+    this.refreshCalculationInfoFromAPI()
   }
 
   changeOfNumOfMonthsRange(numOfMonthsRange) {
     this.numOfMOnthsInput = Number(numOfMonthsRange.target.value);
     this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
-    this.httpRequestsService.postCalculationInfo(this.calculationInputs);
-    console.log(this.amountInput)
+    this.refreshCalculationInfoFromAPI()
   }
 
   changeBtnActive() {

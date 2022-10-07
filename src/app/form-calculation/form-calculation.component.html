@@ -1,4 +1,4 @@
-<form>
+<form> 
   <div class="form-calculation">
     <h2>Úvěrová kalkulačka</h2>
 
@@ -31,7 +31,7 @@
           min="5000"
           max="1200000"
           value="50000"
-          step="5000"
+          step="{{ amountOfMoney >= 100000 ? 5000 : 1000}}"
           [(ngModel)]="amountOfMoney"
           (input)="changeAmountRange($event)"
         />

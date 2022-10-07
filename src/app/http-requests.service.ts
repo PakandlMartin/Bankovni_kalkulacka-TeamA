@@ -76,9 +76,9 @@ export class HttpRequestsService {
 
   constructor(private http: HttpClient) {}
 
-  postCalculationInfo(calculationInputsInfo: any) {
+  postCalculationInfo(calculationInputsInfo: any): Observable<any> {
     const httpPostBody = calculationInputsInfo;
-    this.http
+    return this.http
       .post<{ name: string }>(
         'http://localhost:8000/request/calculate ',
         httpPostBody,
@@ -86,17 +86,11 @@ export class HttpRequestsService {
           observe: 'response',
         }
       )
-      .subscribe(
-        (responseData) => {
-          this.calculationInfo = responseData.body;
-          localStorage.setItem(
-            'userInfoCalculation',
-            JSON.stringify(responseData.body)
-          );
-        },
-        (error) => {
-          this.error.next(error.message);
-        }
+      .pipe(
+        tap((responseData) => {
+          console.log(responseData.body)
+          return responseData.body;
+        })
       );
   }
 
@@ -173,3 +167,28 @@ export class HttpRequestsService {
     });
   }
 }
+
+
+// postCalculationInfo(calculationInputsInfo: any) {
+//   const httpPostBody = calculationInputsInfo;
+//   this.http
+//     .post<{ name: string }>(
+//       'http://localhost:8000/request/calculate ',
+//       httpPostBody,
+//       {
+//         observe: 'response',
+//       }
+//     )
+//     .subscribe(
+//       (responseData) => {
+//         this.calculationInfo = responseData.body;
+//         localStorage.setItem(
+//           'userInfoCalculation',
+//           JSON.stringify(responseData.body)
+//         );
+//       },
+//       (error) => {
+//         this.error.next(error.message);
+//       }
+//     );
+// }

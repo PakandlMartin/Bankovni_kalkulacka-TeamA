@@ -13,10 +13,9 @@ export class IdValidatorDirective {
       return { idNotValid: true };
     } else {
       const isValid = this.validateID(control.value);
-
       return isValid ? null : { idNotValid: true };
     }
-  };
+  }
 
   validateID = (input) => {
     const inputArray = input.split('');
@@ -28,7 +27,7 @@ export class IdValidatorDirective {
       .map((num) => {
         return Number(num);
       });
-
+    const yearsNumber = filteredNum.slice(0, 2).join('');
     const monthsNumber = filteredNum.slice(2, 4).join('');
     const daysNumber = filteredNum.slice(4, 6).join('');
     const boolMonths =
@@ -57,14 +56,19 @@ export class IdValidatorDirective {
       }, 0);
 
       const result =
-      Math.abs(reducedEvenNumbers - reducedOddNumbers) === 11 
-      || (reducedEvenNumbers - reducedOddNumbers) === 0
-      || oddNumbers[oddNumbers.length - 1] === 0;
+        Math.abs(reducedEvenNumbers - reducedOddNumbers) === 11 ||
+        reducedEvenNumbers - reducedOddNumbers === 0 ||
+        oddNumbers[oddNumbers.length - 1] === 0;
 
       return result;
     }
 
-    if (filteredNum.length === 9 && boolMonths && boolDays) {
+    if (
+      filteredNum.length === 9 &&
+      boolMonths &&
+      boolDays &&
+      yearsNumber < '54'
+    ) {
       const lastThreeNumbers = filteredNum.slice(6, 9).join('');
       const result = lastThreeNumbers != '000';
 

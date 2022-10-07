@@ -12,7 +12,6 @@ export class FormDetailsComponent implements OnInit, DoCheck {
   requestCalc;
 
   infoCalculateFromLocaleStorage = localStorage.getItem('userInfoCalculation');
-
   infoAboutUserAPILocaleStorage = localStorage.getItem('userInfo');
 
   constructor(private httpRequestsService: HttpRequestsService) {}
@@ -29,7 +28,6 @@ export class FormDetailsComponent implements OnInit, DoCheck {
       JSON.parse(this.infoAboutUserAPILocaleStorage).id
     );
   }
-
   ngDoCheck(): void {
     this.infoAboutUserFromAPI = {
       ...JSON.parse(this.infoAboutUserAPILocaleStorage),

@@ -11,12 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './form-contact.component.html',
   styleUrls: ['./form-contact.component.css'],
 })
-export class FormContactComponent implements DoCheck, OnInit {
-  ngDoCheck(): void {
-    this.client.amount = this.userInfoService.calculationInformation.amount;
-    this.client.numOfMonths =
-      this.userInfoService.calculationInformation.numOfMonths;
-  }
+export class FormContactComponent implements OnInit {
+
 
   constructor(
     private httpRequestsService: HttpRequestsService,
@@ -25,13 +21,18 @@ export class FormContactComponent implements DoCheck, OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.client.amount = this.userInfoService.calculationInformation.amount;
+    this.client.numOfMonths =
+    this.userInfoService.calculationInformation.numOfMonths;
+  }
 
   @ViewChild('f') signUpForm: NgForm;
 
   idCreated = false;
   selectedType = 'INDIVIDUAL';
-  example = "nothing"
+  errorMessage:string = ""
+  infoFromCalculationLocalStorage: object = {};
 
 
 
@@ -83,18 +84,18 @@ export class FormContactComponent implements DoCheck, OnInit {
     this.client.name = this.signUpForm.value.name.trim();
     this.client.companyName = this.signUpForm.value.companyName;
     this.client.surname = this.signUpForm.value.surname.trim();
-    this.client.birthNum = this.signUpForm.value.birthNum.trim();
-    this.client.nationality = this.signUpForm.value.nationality.trim();
+    this.client.birthNum = this.signUpForm.value.birthNum;
+    this.client.nationality = this.signUpForm.value.nationality;
     this.client.email = this.signUpForm.value.email.trim();
     this.client.phone = this.signUpForm.value.phone.trim();
     this.client.IC = this.signUpForm.value.IC;
     this.client.position = this.signUpForm.value.position;
-    this.client.address.street = this.signUpForm.value.street.trim();
+    this.client.address.street = this.signUpForm.value.street;
     this.client.address.descNumber = Number(this.signUpForm.value.descNumber);
     this.client.address.indicativeNumber = Number(
       this.signUpForm.value.indicativeNumber
     );
-    this.client.address.city = this.signUpForm.value.city.trim();
+    this.client.address.city = this.signUpForm.value.city;
     this.client.address.postalCode = Number(this.signUpForm.value.postalCode);
   }
 
@@ -107,10 +108,12 @@ export class FormContactComponent implements DoCheck, OnInit {
         .subscribe((responseData) => {
           this.userInfoService.infoAboutUser = responseData.body;
           localStorage.setItem('userInfo', JSON.stringify(responseData.body));
-
           this.router.navigate(['form-details/' + responseData.body.id], {
             relativeTo: this.route,
           });
+        }, error => {
+          this.errorMessage = 'Testovací chyba ze serveru - sudé číslo u čísla popisného'
+          console.error(error)
         });
     }
   }

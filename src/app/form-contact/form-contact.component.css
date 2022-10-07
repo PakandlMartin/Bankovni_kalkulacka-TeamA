@@ -48,6 +48,11 @@ h2 {
   max-width: fit-content;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 option {
   cursor: pointer;
 }
@@ -199,15 +204,6 @@ input[type="number"] {
 }
 
 
-/* .form-person {
-  background-color: white;
-  margin: 0px auto 50px auto;
-  padding: 20px 20px 20px 20px;
-  min-width: 500px;
-  max-width: 700px;
-  box-shadow: rgba(116, 116, 116, 0.548) 0px 7px 29px 0px;
-  border-radius: 5px;
-} */
 
 
 
@@ -255,13 +251,3 @@ display: block;
 
 }
 
-/* .phoneDiv > input {
-  min-width: 120px;
-  max-width: 170px;
-  border-radius: 2px 2px 0 0;
-}
-
-.phoneDiv > span {
-  display: inline-block;
-  padding-right: 5px
-} */
