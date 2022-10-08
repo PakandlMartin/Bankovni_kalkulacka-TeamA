@@ -78,7 +78,7 @@ export class IdValidatorDirective {
       return result;
     }
 
-    // if ID has onlny 9 numbers and months, days and years are true
+    // if ID has only 9 numbers and months, days and years are true
     if (
       filteredNum.length === 9 &&
       boolMonths &&

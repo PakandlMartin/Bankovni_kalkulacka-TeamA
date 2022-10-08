@@ -54,7 +54,7 @@ export class FormContactComponent implements OnInit {
     }
   }
 
-  // object for all information about client 
+  // object for all informations about client 
   client = {
     applicantType: '',
     name: '',
