@@ -68,7 +68,8 @@ export class AuthService {
     return this.http.get<any>('http://localhost:8000/request/list',
       {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.myToken
+          Authorization: 'Bearer ' 
+          + this.myToken
         })
       })
   }
@@ -82,18 +83,17 @@ export class AuthService {
     return this.http.get<any>('http://localhost:8000/request/' + id);
   }
 
-  approveRequest(id: string): Observable<{
-    applicantType: string, name: string, surname: string, birthNum: string, nationality: string, email: string,
-    phone: string, IC: string, position: string, companyName: string, amount: number, numOfMonths: number,
-    address: { street: string, descNumber: number, indicativeNumber: number, city: string, postalCode: number },
-    created: string, status: string, id: string
-  }> {
-    return this.http.put<any>('http://localhost:8000/request/'+id+'/approve', {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.myToken
-      })
+  approveRequest(id: string): Observable<any> {
+    console.log(id)
+    return this.http.put<any>('http://localhost:8000/request/'+ id +'/approve','', 
+  {
+    headers: new HttpHeaders({
+      Authorization: 'Bearer ' + 'mazwdbGkD5'
+    })
     });
   }
+
+
 
   cancelRequest(id: string): Observable<{
     applicantType: string, name: string, surname: string, birthNum: string, nationality: string, email: string,
@@ -101,7 +101,7 @@ export class AuthService {
     address: { street: string, descNumber: number, indicativeNumber: number, city: string, postalCode: number },
     created: string, status: string, id: string
   }> {
-    return this.http.put<any>('http://localhost:8000/request/'+id+'/cancel', {
+    return this.http.put<any>('http://localhost:8000/request/'+id+'/cancel','', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.myToken
       })
@@ -123,3 +123,18 @@ export class AuthService {
 
 
 }
+
+
+// approveRequest(id: string): Observable<{
+//   applicantType: string, name: string, surname: string, birthNum: string, nationality: string, email: string,
+//   phone: string, IC: string, position: string, companyName: string, amount: number, numOfMonths: number,
+//   address: { street: string, descNumber: number, indicativeNumber: number, city: string, postalCode: number },
+//   created: string, status: string, id: string
+// }> {
+//   console.log(id)
+//   return this.http.put<any>('http://localhost:8000/request/'+ id +'/approve', {
+//     headers: new HttpHeaders({
+//       Authorization: `Bearer qdsMkMpb16`
+//     })
+//   });
+// }

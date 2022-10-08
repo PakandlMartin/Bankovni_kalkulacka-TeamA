@@ -68,15 +68,17 @@ export class EmployeeDetailComponent implements OnInit {
 
 
   onApproveRequest(clientId) {
-    this.authService.approveRequest(clientId).subscribe(resultData => {
-      this.client = resultData;
+    console.log(clientId)
+    this.authService.approveRequest(clientId)
+    .subscribe(resultData => {
+      console.log(resultData)
     });
 
   }
 
   onCancelRequest(clientId) {
     this.authService.cancelRequest(clientId).subscribe(resultData => {
-      this.client = resultData;
+      console.log(resultData)
     });
   }
 
