@@ -40,6 +40,7 @@
         <span>5 000</span>
         <span>1 200 000</span>
       </div>
+      <p *ngIf="!rightAmount" class="warning">Částka musí být v rozmezí 5 000 - 1 200 000 Kč</p>
     </div>
 
     <div class="boxDiv">
@@ -79,6 +80,7 @@
         <span>6</span>
         <span>60</span>
       </div>
+      <p *ngIf="!rightNumOfMonths" class="warning">Doba splácení musí být mezi 6 a 60 měsíci</p>
     </div>
 
     <div class="formDisplay" *ngIf="btnActive">

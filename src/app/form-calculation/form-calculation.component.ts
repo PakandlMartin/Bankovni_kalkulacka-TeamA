@@ -29,6 +29,10 @@ export class FormCalculationComponent implements OnInit {
   // for ng purposes - display changes in months inputs
   numOfMonthsNg: any;
 
+  // booleans for warning messages
+rightAmount: boolean = true;
+rightNumOfMonths: boolean = true;
+
   constructor(
     private httpRequestsService: HttpRequestsService,
     private userInfoService: UserInfoService,
@@ -79,23 +83,39 @@ export class FormCalculationComponent implements OnInit {
 
   // event handler - change of amount (text)
   changeOfAmount(amountChange) {
-    this.amountInput = Number(amountChange.target.value);
-    this.calculationInputs.amount = Number(this.amountInput);
-    this.changeBtnActive();
-    this.refreshCalculationInfoFromAPI();
+    if (Number(amountChange.target.value) < 5000 || Number(amountChange.target.value) > 1200000 ) {
+      this.rightAmount = false
+      this.amountInput = Number(amountChange.target.value) < 5000 ? 5000 : 1200000;
+    } else {
+      this.amountInput = Number(amountChange.target.value);
+      this.calculationInputs.amount = Number(this.amountInput);
+      this.rightAmount = true;
+    }
+      this.changeBtnActive();
+      this.refreshCalculationInfoFromAPI();
   }
+
+
+
   // event handler - change of amount (range)
   changeAmountRange(amountChangeRange) {
     this.amountInput = Number(amountChangeRange.target.value);
     this.calculationInputs.amount = Number(this.amountInput);
     this.changeBtnActive();
     this.refreshCalculationInfoFromAPI();
+    this.rightAmount = true;
   }
 
    // event handler - change of months (text)
   changeOfNumOfMonths(numChange) {
-    this.numOfMOnthsInput = Number(numChange.target.value);
-    this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
+    if (Number(numChange.target.value) < 6 || Number(numChange.target.value) > 60) {
+      this.rightNumOfMonths = false;
+      this.numOfMOnthsInput = Number(numChange.target.value) < 6 ? 6 : 60;
+    } else {
+      this.numOfMOnthsInput = Number(numChange.target.value);
+      this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
+      this.rightNumOfMonths = true;
+    }
     this.changeBtnActive();
     this.refreshCalculationInfoFromAPI();
   }
@@ -105,6 +125,7 @@ export class FormCalculationComponent implements OnInit {
     this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
     this.refreshCalculationInfoFromAPI();
+    this.rightNumOfMonths = true;
   }
 
   // if one of the input is touched, btn is active
