@@ -84,11 +84,10 @@ export class AuthService {
   }
 
   approveRequest(id: string): Observable<any> {
-    console.log(id)
     return this.http.put<any>('http://localhost:8000/request/'+ id +'/approve','', 
   {
     headers: new HttpHeaders({
-      Authorization: 'Bearer ' + 'mazwdbGkD5'
+      Authorization: 'Bearer ' + this.myToken
     })
     });
   }

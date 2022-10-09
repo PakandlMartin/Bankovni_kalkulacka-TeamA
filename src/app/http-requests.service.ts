@@ -88,7 +88,7 @@ export class HttpRequestsService {
       )
       .pipe(
         tap((responseData) => {
-          console.log(responseData.body)
+          console.log(responseData.body);
           return responseData.body;
         })
       );
@@ -110,17 +110,19 @@ export class HttpRequestsService {
       (responseData) => {
         this.infoAboutUser = responseData;
         localStorage.setItem('userInfo', JSON.stringify(responseData));
-        return true
+        return true;
       },
       (error) => {
         this.error.next(error.message);
-        return false
+        return false;
       }
     );
   }
 
-  getInfoAboutUserFromApi(id: string):Observable<any> {
-    return this.http.get<any>('http://localhost:8000/request/' + id, { observe: 'response'})
+  getInfoAboutUserFromApi(id: string): Observable<any> {
+    return this.http.get<any>('http://localhost:8000/request/' + id, {
+      observe: 'response',
+    });
   }
 
   login(login: string, password: string) {
@@ -160,8 +162,38 @@ export class HttpRequestsService {
       }),
     });
   }
+
+  changeCalculation(calculationInfo: any) {
+ 
+    this.http.put<any>(
+      'http://localhost:8000/request/' + calculationInfo.id,
+  {
+    amount: calculationInfo.amount,
+    numOfMonths: calculationInfo.numOfMonths
+  }
+    ).subscribe(data => {
+      console.log(data)
+    });
+  }
 }
 
+//  postCalculationInfo(calculationInputsInfo: any): Observable<any> {
+//     const httpPostBody = calculationInputsInfo;
+//     return this.http
+//       .post<{ name: string }>(
+//         'http://localhost:8000/request/calculate ',
+//         httpPostBody,
+//         {
+//           observe: 'response',
+//         }
+//       )
+//       .pipe(
+//         tap((responseData) => {
+//           console.log(responseData.body)
+//           return responseData.body;
+//         })
+//       );
+//   }
 
 // postCalculationInfo(calculationInputsInfo: any) {
 //   const httpPostBody = calculationInputsInfo;
@@ -186,8 +218,6 @@ export class HttpRequestsService {
 //       }
 //     );
 // }
-
-
 
 // getInfoAboutUser(id: string) {
 //   this.http.get<any>('http://localhost:8000/request/' + id).subscribe(
