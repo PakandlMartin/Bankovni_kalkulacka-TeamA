@@ -3,17 +3,10 @@
 
   </div>
 
-  <div *ngIf="false">
-    <h1>
-      Špatně zadané údaje. Vraťte se prosím na formulář a opravte neplatné
-      údaje.
-    </h1>
-  </div>
-
   <div *ngIf="infoAboutUserFromAPI.id">
     <h1>Vaše žádost o úvěr</h1>
     <p>
-      ID: <span class="green bold">{{ infoAboutUserFromAPI.id }}</span>
+      ID: <b class="green">{{ infoAboutUserFromAPI.id }}</b>
     </p>
   </div>
 
@@ -22,18 +15,45 @@
   <div class="personalInformation">
     <div *ngIf="infoAboutUserFromAPI.amount" class="item flex">
       <span>VÝŠE ÚVĚRU</span>
-      <span class="bold black"
-        >{{ numberWithSpaces(infoAboutUserFromAPI.amount) }} Kč</span
+      <span 
+      *ngIf="!changeActive" 
+      class="bold black"
+      >{{ numberWithSpaces(infoAboutUserFromAPI.amount) }} Kč
+      </span
       >
+      <input 
+      *ngIf="changeActive" 
+      class="amountInput" 
+      (input) = "changeOfAmount($event)"
+      value="{{infoAboutUserFromAPI.amount}}" 
+      type="text"/>
     </div>
     <div *ngIf="infoAboutUserFromAPI.numOfMonths" class="item flex">
       <span>DOBA SPLÁCENÍ</span>
-      <span class="bold black"
-        >{{ infoAboutUserFromAPI.numOfMonths }} měsíců</span
+      <span *ngIf="!changeActive" class="bold black"
+        >{{ infoAboutUserFromAPI.numOfMonths}} měsíců</span
       >
+      <input 
+      #numOfMonths
+      *ngIf="changeActive" 
+      class="numOfMonthsInput " 
+      value="{{infoAboutUserFromAPI.numOfMonths}}" 
+      (input) = "changeOfNumOfMonths($event)"
+      type="text"/>
+    </div>
+    <div class="center">
+
+      <button 
+      *ngIf="!changeActive && infoAboutUserFromAPI.status === 'PENDING'" 
+      (click)="changeActiveSubmit()" class="changeBtn">změnit
+    </button>
+
+      <button *ngIf="confirmBtnActive" class="confirmBtn" (click) ="confirmChange()">potvrdit změnu
+      </button>
     </div>
     
   </div>
+
 
   <h3>Osobní údaje</h3>
 
@@ -205,10 +225,10 @@
     <div class="item flex">
       <span>STAV</span>
 
-      <span *ngIf="infoAboutUserFromAPI.status === 'PENDING'" class="bold green"
+      <span *ngIf="infoAboutUserFromAPI.status === 'PENDING'" class="bold orange"
         >Nerozhodnutá</span
       >
-      <span *ngIf="infoAboutUserFromAPI.status === 'APPROVED'" class="bold blue"
+      <span *ngIf="infoAboutUserFromAPI.status === 'APPROVED'" class="bold green"
         >Schválena</span
       >
       <span *ngIf="infoAboutUserFromAPI.status === 'CANCELLED'" class="bold red"

@@ -25,6 +25,7 @@ h3 {
   max-width: 420px;
   margin: auto auto;
   font-size: 1.1rem;
+  vertical-align: middle;
 }
 
 .bold {
@@ -66,10 +67,88 @@ hr {
   color: rgb(39, 39, 224);
 }
 
+.orange {
+  color: #cca00f
+}
+
 .smallHeader {
   font-size: 1rem;
   font-weight: normal;
   border-bottom: solid 1px #cccccc;
   padding-bottom: 0;
   margin-bottom: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.changeBtn {
+  font-size: 1.4rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color:#068b9ad3;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px auto;
+  border: none;
+}
+
+.changeBtn:hover {
+  box-shadow: 0px 0px 6px #068b9ad3;
+  color: white;
+}
+
+.confirmBtn {
+  font-size: 1.4rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color:#00843ed3 ;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px auto;
+  border: none;
+}
+
+.confirmBtn:hover {
+  box-shadow: 0px 0px 6px #00843d;
+  color: white;
+}
+
+.amountInput {
+  min-width: 50px;
+  max-width: 150px;
+  min-height: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  border: #d8f5e6 solid 2px;
+  outline: none;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.numOfMonthsInput {
+  min-width: 50px;
+  max-width: 150px;
+  min-height: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  border: #d8f5e6 solid 2px;
+  outline: none;
+  border-radius: 2px;
+  background-color: white;
+}
+
+span {
+  display : flex;
+  align-items : center;
 }

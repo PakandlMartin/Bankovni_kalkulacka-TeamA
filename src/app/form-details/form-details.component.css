@@ -66,6 +66,10 @@ hr {
   color: rgb(39, 39, 224);
 }
 
+.orange {
+  color: #cca00f
+}
+
 .smallHeader {
   font-size: 1rem;
   font-weight: normal;

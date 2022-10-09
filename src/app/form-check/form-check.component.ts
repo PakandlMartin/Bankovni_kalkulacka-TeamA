@@ -10,10 +10,43 @@ import { HttpRequestsService } from '../http-requests.service';
 export class FormCheckComponent implements OnInit, DoCheck {
   // variable for information about user from localStorage
   infoAboutUserFromAPI = null;
+  changeActive: boolean = false;
+  confirmBtnActive: boolean = false;
+  amountInput;
+  numOfMonthsInput;
 
   constructor(private httpRequestsService: HttpRequestsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.infoAboutUserFromAPI = JSON.parse(localStorage.getItem('userInfoAPI'));
+    this.amountInput = this.infoAboutUserFromAPI.amount;
+    this.numOfMonthsInput = this.infoAboutUserFromAPI.numOfMonths
+  }
+
+  changeActiveSubmit() {
+this.changeActive = true;
+this.confirmBtnActive = true
+  }
+
+  confirmChange() {
+    console.log("změna")
+  }
+
+  changeOfAmount(event) {
+    this.amountInput = event.target.value;
+    console.log(event.target.value)
+    console.log(this.amountInput)
+    console.log(this.numOfMonthsInput)
+  }
+
+  changeOfNumOfMonths(event) {
+    this.numOfMonthsInput = event.target.value;
+
+    console.log(event.target.value)
+    console.log(this.amountInput)
+    console.log(this.numOfMonthsInput)
+  }
+
 
   ngDoCheck(): void {
     // store data about user from localstorage to object - for template
