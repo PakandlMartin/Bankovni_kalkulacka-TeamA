@@ -16,28 +16,38 @@
       <span *ngIf="!changeActive" class="bold black"
         >{{ numberWithSpaces(calculationInputs.amount) }} Kč
       </span>
-      <input
-        *ngIf="changeActive"
-        class="amountInput"
-        (input)="changeOfAmount($event)"
-        value="{{ calculationInputs.amount }}"
-        type="text"
-      />
+      <span *ngIf="changeActive">
+        <input
+          class="amountInput"
+          (input)="changeOfAmount($event)"
+          value="{{ calculationInputs.amount }}"
+          type="text"
+        /> 
+       <span class="bold black">Kč</span> 
+      </span>
     </div>
+    <p *ngIf="!rightAmount"  class="warning">Částka musí být v rozmezí 5 000 - 1 200 000 Kč</p>
+
+
     <div *ngIf="infoAboutUserFromAPI.numOfMonths" class="item flex">
       <span>DOBA SPLÁCENÍ</span>
       <span *ngIf="!changeActive" class="bold black"
         >{{ calculationInputs.numOfMonths }} měsíců</span
       >
-      <input
-        #numOfMonths
-        *ngIf="changeActive"
-        class="numOfMonthsInput"
-        value="{{ calculationInputs.numOfMonths }}"
-        (input)="changeOfNumOfMonths($event)"
-        type="text"
-      />
+      <span *ngIf="changeActive">
+        <input
+          #numOfMonths
+          class="numOfMonthsInput"
+          value="{{ calculationInputs.numOfMonths }}"
+          (input)="changeOfNumOfMonths($event)"
+          type="text"
+        />
+        <span class="bold black">měsíců</span>
+      </span>
     </div>
+
+    <p *ngIf="!rightNumOfMonths"  class="warning">Doba splácení musí být mezi 6 - 60 měsíci</p>
+
     <div class="center">
       <button
         *ngIf="!changeActive && infoAboutUserFromAPI.status === 'PENDING'"
@@ -49,8 +59,12 @@
 
       <button
         *ngIf="confirmBtnActive"
-        class="confirmBtn"
         (click)="confirmChange()"
+        [disabled] = "!rightNumOfMonths || !rightAmount"
+        [ngClass]="
+        (rightAmount && rightNumOfMonths) ?
+        'confirmBtn' : 'invalidBtn'
+        "
       >
         potvrdit změnu
       </button>

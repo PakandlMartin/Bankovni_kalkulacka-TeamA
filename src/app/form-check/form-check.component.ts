@@ -12,10 +12,12 @@ export class FormCheckComponent implements OnInit, DoCheck {
   infoAboutUserFromAPI = null;
   changeActive: boolean = false;
   confirmBtnActive: boolean = false;
-  amountInput;
-  numOfMonthsInput;
-  calculationInputs;
+  amountInput: number;
+  numOfMonthsInput: number;
+  calculationInputs: any;
 
+rightAmount: boolean = true;
+rightNumOfMonths: boolean = true;
  
 
   constructor(private httpRequestsService: HttpRequestsService) {}
@@ -61,16 +63,27 @@ this.confirmBtnActive = true
   }
 
   changeOfAmount(event) {
-    this.amountInput = event.target.value;
-    this.calculationInputs.amount = 
-    Number(event.target.value )
+    if (Number(event.target.value) < 5000 || Number(event.target.value) > 1200000) {
+      this.rightAmount = false;
+    }
+    else {
+      this.amountInput = event.target.value;
+      this.calculationInputs.amount = 
+      Number(event.target.value )
+      this.rightAmount = true;
+    }
     
   }
 
   changeOfNumOfMonths(event) {
-    this.numOfMonthsInput = event.target.value;
-    this.calculationInputs.numOfMonths = 
-    Number(event.target.value)
+    if (Number(event.target.value) < 6 || Number(event.target.value) > 60) {
+this.rightNumOfMonths = false;
+    } else {
+      this.numOfMonthsInput = event.target.value;
+      this.calculationInputs.numOfMonths = 
+      Number(event.target.value)
+      this.rightNumOfMonths = true
+    }
   
   }
 
