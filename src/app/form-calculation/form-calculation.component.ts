@@ -88,11 +88,15 @@ rightNumOfMonths: boolean = true;
       this.amountInput = Number(amountChange.target.value) < 5000 ? 5000 : 1200000;
     } else {
       this.amountInput = Number(amountChange.target.value);
-      this.calculationInputs.amount = Number(this.amountInput);
+      console.log(this.amountInput)
       this.rightAmount = true;
     }
+    
+    this.calculationInputs.amount = Number(this.amountInput);
       this.changeBtnActive();
       this.refreshCalculationInfoFromAPI();
+      console.log("text change amount: ", this.amountInput)
+      console.log(this.calculationInputs)
   }
 
 
@@ -100,10 +104,13 @@ rightNumOfMonths: boolean = true;
   // event handler - change of amount (range)
   changeAmountRange(amountChangeRange) {
     this.amountInput = Number(amountChangeRange.target.value);
-    this.calculationInputs.amount = Number(this.amountInput);
+    // this.calculationInputs.amount = Number(this.amountInput);
+    this.calculationInputs.amount = Number(this.amountOfMoney);
     this.changeBtnActive();
     this.refreshCalculationInfoFromAPI();
     this.rightAmount = true;
+    console.log("range change amount: ", this.amountInput)
+    console.log(this.calculationInputs)
   }
 
    // event handler - change of months (text)
@@ -113,9 +120,9 @@ rightNumOfMonths: boolean = true;
       this.numOfMOnthsInput = Number(numChange.target.value) < 6 ? 6 : 60;
     } else {
       this.numOfMOnthsInput = Number(numChange.target.value);
-      this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
       this.rightNumOfMonths = true;
     }
+    this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
     this.refreshCalculationInfoFromAPI();
   }
@@ -143,4 +150,8 @@ rightNumOfMonths: boolean = true;
       .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       .toString();
   }
+
+ 
+
+
 }

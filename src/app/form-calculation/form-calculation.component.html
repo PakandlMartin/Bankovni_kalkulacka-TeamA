@@ -14,7 +14,7 @@
             min="5000"
             max="1200000"
             name="amount"
-            step="1000"
+            [step]="amountOfMoney >= 100000 ? 5000 : 1000"
             (input)="changeOfAmount($event)"
             [(ngModel)]="amountOfMoney"
           />
@@ -31,9 +31,9 @@
           min="5000"
           max="1200000"
           value="50000"
-          step="{{ amountOfMoney >= 100000 ? 5000 : 1000}}"
-          [(ngModel)]="amountOfMoney"
+          [step]="5000"
           (input)="changeAmountRange($event)"
+          [(ngModel)]="amountOfMoney"
         />
       </div>
       <div class="flexBetween">
@@ -80,7 +80,7 @@
         <span>6</span>
         <span>60</span>
       </div>
-      <p *ngIf="!rightNumOfMonths" class="warning">Doba splácení musí být mezi 6 a 60 měsíci</p>
+      <p *ngIf="!rightNumOfMonths" class="warning">Doba splácení musí být mezi 6 - 60 měsíci</p>
     </div>
 
     <div class="formDisplay" *ngIf="btnActive">
@@ -124,8 +124,8 @@
 
     <div class="flex">
       <button
-        [ngClass]="{ hover: btnActive }"
-        [disabled]="!btnActive"
+        [ngClass]="{ hover: btnActive && rightAmount && rightNumOfMonths }"
+        [disabled]="!btnActive || !rightAmount || !rightNumOfMonths"
         type="submit"
         class="btn"
         (click)="calculate(amount.value, numOfMonths.value)"

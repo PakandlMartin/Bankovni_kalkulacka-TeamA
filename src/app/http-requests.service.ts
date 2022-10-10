@@ -88,7 +88,7 @@ export class HttpRequestsService {
       )
       .pipe(
         tap((responseData) => {
-          console.log(responseData.body);
+          // console.log(responseData.body);
           return responseData.body;
         })
       );
