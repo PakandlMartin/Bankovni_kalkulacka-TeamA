@@ -80,7 +80,7 @@ button {
   text-align: center;
   display: block;
   color: white;
-  background-color:#00843ed3;
+  background-color:#239d5c;
   margin-bottom: 20px;
   cursor: pointer;
   border-radius: 5px;
@@ -98,7 +98,7 @@ button:disabled {
 }
 
 .hover:hover {
-  box-shadow: 0px 0px 6px #00843ed3;
+  box-shadow: 0px 0px 10px #0bae57;
   color: white;
 }
 
